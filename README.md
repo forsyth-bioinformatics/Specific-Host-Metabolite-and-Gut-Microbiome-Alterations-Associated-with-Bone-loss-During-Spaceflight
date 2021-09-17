@@ -9,13 +9,13 @@ Whole Genome Shotgun (WGS) was performed on 20 Samples with an average Read Dept
 Reads were processed using the midas_nextflow workflow - Link
 
 Output consists of:
-Species Analysis - 
-Gene Analysis -
+ - Species Analysis - 
+ - Gene Analysis -
 
 # 16S Data
 16S rRNA sequencing was performed on 20 samples amplifying the V1-V3 region with an average Read Depth of X reads/sample
 Reads were processed using custom bioinformatic workflows in R
 
 Output consitis of:
-Taxonomic Analysis
+ - Taxonomic Analysis
 
