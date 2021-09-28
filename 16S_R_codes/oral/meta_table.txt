@@ -1,0 +1,81 @@
+	Time	Flight	Cage	Flight_Cage	Animal_ID	Treatment	Compare
+Pre0302	t.0	t.0 - Pre Launch	215	Pre.215	302	LAR_G	t.0 - Pre Launch LAR_G
+Pre0646	t.0	t.0 - Pre Launch	215	Pre.215	646	LAR_G	t.0 - Pre Launch LAR_G
+Pre0B2B	t.0	t.0 - Pre Launch	215	Pre.215	0B2B	LAR_G	t.0 - Pre Launch LAR_G
+Pre0B59	t.0	t.0 - Pre Launch	215	Pre.215	0B59	LAR_G	t.0 - Pre Launch LAR_G
+Pre340E	t.0	t.0 - Pre Launch	215	Pre.215	340E	LAR_G	t.0 - Pre Launch LAR_G
+Pre406C	t.0	t.0 - Pre Launch	215	Pre.215	406C	LAR_G	t.0 - Pre Launch LAR_G
+Pre471D	t.0	t.0 - Pre Launch	215	Pre.215	471D	LAR_G	t.0 - Pre Launch LAR_G
+Pre591C	t.0	t.0 - Pre Launch	215	Pre.215	591C	LAR_G	t.0 - Pre Launch LAR_G
+Pre6E50	t.0	t.0 - Pre Launch	215	Pre.215	6.00E+50	LAR_G	t.0 - Pre Launch LAR_G
+Pre7262	t.0	t.0 - Pre Launch	215	Pre.215	7262	LAR_G	t.0 - Pre Launch LAR_G
+t10302	t.1	t.1 - 4 Weeks	215	T1.215	302	LAR_G	t.1 - 4 Weeks LAR_G
+t10646	t.1	t.1 - 4 Weeks	215	T1.215	646	LAR_G	t.1 - 4 Weeks LAR_G
+t10B2B	t.1	t.1 - 4 Weeks	215	T1.215	0B2B	LAR_G	t.1 - 4 Weeks LAR_G
+t10B59	t.1	t.1 - 4 Weeks	215	T1.215	0B59	LAR_G	t.1 - 4 Weeks LAR_G
+t1340E	t.1	t.1 - 4 Weeks	215	T1.215	340E	LAR_G	t.1 - 4 Weeks LAR_G
+t1406C	t.1	t.1 - 4 Weeks	215	T1.215	406C	LAR_G	t.1 - 4 Weeks LAR_G
+t1471D	t.1	t.1 - 4 Weeks	215	T1.215	471D	LAR_G	t.1 - 4 Weeks LAR_G
+t1591C	t.1	t.1 - 4 Weeks	215	T1.215	591C	LAR_G	t.1 - 4 Weeks LAR_G
+t16E50	t.1	t.1 - 4 Weeks	215	T1.215	6.00E+50	LAR_G	t.1 - 4 Weeks LAR_G
+t17262	t.1	t.1 - 4 Weeks	215	T1.215	7262	LAR_G	t.1 - 4 Weeks LAR_G
+t20302	t.2	t.2 - 8 Weeks	215	T2.215	302	LAR_G	t.2 - 8 Weeks LAR_G
+t20646	t.2	t.2 - 8 Weeks	215	T2.215	646	LAR_G	t.2 - 8 Weeks LAR_G
+t20B2B	t.2	t.2 - 8 Weeks	215	T2.215	0B2B	LAR_G	t.2 - 8 Weeks LAR_G
+t20B59	t.2	t.2 - 8 Weeks	215	T2.215	0B59	LAR_G	t.2 - 8 Weeks LAR_G
+t2340E	t.2	t.2 - 8 Weeks	215	T2.215	340E	LAR_G	t.2 - 8 Weeks LAR_G
+t2406C	t.2	t.2 - 8 Weeks	215	T2.215	406C	LAR_G	t.2 - 8 Weeks LAR_G
+t2471D	t.2	t.2 - 8 Weeks	215	T2.215	471D	LAR_G	t.2 - 8 Weeks LAR_G
+t2591C	t.2	t.2 - 8 Weeks	215	T2.215	591C	LAR_G	t.2 - 8 Weeks LAR_G
+t26E50	t.2	t.2 - 8 Weeks	215	T2.215	6.00E+50	LAR_G	t.2 - 8 Weeks LAR_G
+t27262	t.2	t.2 - 8 Weeks	215	T2.215	7262	LAR_G	t.2 - 8 Weeks LAR_G
+Pre0023	t.0	t.0 - Pre Launch	216	Pre.216	23	LAR	t.0 - Pre Launch LAR
+Pre167D	t.0	t.0 - Pre Launch	216	Pre.216	167D	LAR	t.0 - Pre Launch LAR
+Pre2D17	t.0	t.0 - Pre Launch	216	Pre.216	2D17	LAR	t.0 - Pre Launch LAR
+Pre4D34	t.0	t.0 - Pre Launch	216	Pre.216	4D34	LAR	t.0 - Pre Launch LAR
+Pre5D52	t.0	t.0 - Pre Launch	216	Pre.216	5D52	LAR	t.0 - Pre Launch LAR
+Pre671C	t.0	t.0 - Pre Launch	216	Pre.216	671C	LAR	t.0 - Pre Launch LAR
+Pre6807	t.0	t.0 - Pre Launch	216	Pre.216	6807	LAR	t.0 - Pre Launch LAR
+Pre737F	t.0	t.0 - Pre Launch	216	Pre.216	737F	LAR	t.0 - Pre Launch LAR
+Pre7C29	t.0	t.0 - Pre Launch	216	Pre.216	7C29	LAR	t.0 - Pre Launch LAR
+Pre7D1C	t.0	t.0 - Pre Launch	216	Pre.216	7D1C	LAR	t.0 - Pre Launch LAR
+t10023	t.1	t.1 - 4 Weeks	216	T1.216	23	LAR	t.1 - 4 Weeks LAR
+t1167D	t.1	t.1 - 4 Weeks	216	T1.216	167D	LAR	t.1 - 4 Weeks LAR
+t12D17	t.1	t.1 - 4 Weeks	216	T1.216	2D17	LAR	t.1 - 4 Weeks LAR
+t14D34	t.1	t.1 - 4 Weeks	216	T1.216	4D34	LAR	t.1 - 4 Weeks LAR
+t15D52	t.1	t.1 - 4 Weeks	216	T1.216	5D52	LAR	t.1 - 4 Weeks LAR
+t1671C	t.1	t.1 - 4 Weeks	216	T1.216	671C	LAR	t.1 - 4 Weeks LAR
+t16807	t.1	t.1 - 4 Weeks	216	T1.216	6807	LAR	t.1 - 4 Weeks LAR
+t1737F	t.1	t.1 - 4 Weeks	216	T1.216	737F	LAR	t.1 - 4 Weeks LAR
+t17C29	t.1	t.1 - 4 Weeks	216	T1.216	7C29	LAR	t.1 - 4 Weeks LAR
+t17D1C	t.1	t.1 - 4 Weeks	216	T1.216	7D1C	LAR	t.1 - 4 Weeks LAR
+t20023	t.2	t.2 - 8 Weeks	216	T2.216	23	LAR	t.2 - 8 Weeks LAR
+t2167D	t.2	t.2 - 8 Weeks	216	T2.216	167D	LAR	t.2 - 8 Weeks LAR
+t22D17	t.2	t.2 - 8 Weeks	216	T2.216	2D17	LAR	t.2 - 8 Weeks LAR
+t24D34	t.2	t.2 - 8 Weeks	216	T2.216	4D34	LAR	t.2 - 8 Weeks LAR
+t25D52	t.2	t.2 - 8 Weeks	216	T2.216	5D52	LAR	t.2 - 8 Weeks LAR
+t2671C	t.2	t.2 - 8 Weeks	216	T2.216	671C	LAR	t.2 - 8 Weeks LAR
+t26807	t.2	t.2 - 8 Weeks	216	T2.216	6807	LAR	t.2 - 8 Weeks LAR
+t2737F	t.2	t.2 - 8 Weeks	216	T2.216	737F	LAR	t.2 - 8 Weeks LAR
+t27C29	t.2	t.2 - 8 Weeks	216	T2.216	7C29	LAR	t.2 - 8 Weeks LAR
+t27D1C	t.2	t.2 - 8 Weeks	216	T2.216	7D1C	LAR	t.2 - 8 Weeks LAR
+Pre014D	Base	Baseline	204	Base.204	014D	Base	Baseline Base
+Pre0433	Base	Baseline	213	Base.213	433	Base	Baseline Base
+Pre0A78	Base	Baseline	204	Base.204	0A78	Base	Baseline Base
+Pre0E29	Base	Baseline	204	Base.204	0.00E+00	Base	Baseline Base
+Pre0F6A	Base	Baseline	213	Base.213	0F6A	Base	Baseline Base
+Pre1B7C	Base	Baseline	213	Base.213	1B7C	Base	Baseline Base
+Pre1D21	Base	Baseline	204	Base.204	1D21	Base	Baseline Base
+Pre2401	Base	Baseline	204	Base.204	2401	Base	Baseline Base
+Pre2B00	Base	Baseline	204	Base.204	2B00	Base	Baseline Base
+Pre3451	Base	Baseline	213	Base.213	3451	Base	Baseline Base
+Pre362D	Base	Baseline	204	Base.204	362D	Base	Baseline Base
+Pre3B49	Base	Baseline	204	Base.204	3B49	Base	Baseline Base
+Pre3C4E	Base	Baseline	213	Base.213	3C4E	Base	Baseline Base
+Pre4305	Base	Baseline	204	Base.204	4305	Base	Baseline Base
+Pre4410	Base	Baseline	213	Base.213	4410	Base	Baseline Base
+Pre496F	Base	Baseline	213	Base.213	496F	Base	Baseline Base
+Pre5D38	Base	Baseline	213	Base.213	5D38	Base	Baseline Base
+Pre6224	Base	Baseline	213	Base.213	6224	Base	Baseline Base
+Pre691B	Base	Baseline	204	Base.204	691B	Base	Baseline Base
+Pre7B56	Base	Baseline	213	Base.213	7B56	Base	Baseline Base
