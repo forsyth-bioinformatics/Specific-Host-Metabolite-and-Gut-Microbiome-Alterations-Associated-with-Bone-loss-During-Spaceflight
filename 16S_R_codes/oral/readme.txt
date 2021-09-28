@@ -1,1 +1,1 @@
-This folder contains subfolders for each type of comparison for the oral samples. There is an R_all.cmd code file that was used to generate all the plots and results.
+This folder contains subfolders for each type of comparison for the oral samples. There is an R_all.cmd code file that was used to generate all the plots and results. Each comparision compared OTUs at 3 different levels: amplicon sequence variants (ASV), specie, and genus and the results were saved into each corresponding folder.
