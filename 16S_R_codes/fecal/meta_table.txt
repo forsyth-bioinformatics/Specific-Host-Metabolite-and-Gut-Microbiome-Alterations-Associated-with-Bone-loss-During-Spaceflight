@@ -1,0 +1,141 @@
+	Cage	SamID	Time	Treatment	TT	TTC	Compare	Compare1
+X204.014D.final	204	014D	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.014D.pre	204	014D	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X204.0A78.final	204	0A78	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.0A78.pre	204	0A78	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X204.0E29.final	204	0.00E+00	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.0E29.pre	204	0.00E+00	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X204.1D21.final	204	1D21	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.1D21.pre	204	1D21	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X204.2401.final	204	2401	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.2401.pre	204	2401	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X204.2B00.final	204	2B00	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.2B00.pre	204	2B00	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X204.362D.final	204	362D	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.362D.pre	204	362D	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X204.3B49.final	204	3B49	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.3B49.pre	204	3B49	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X204.4305.final	204	4305	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.4305.pre	204	4305	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X204.691B.final	204	691B	final	baseline	baseline_final	baseline_final_204	baseline	baseline
+X204.691B.pre	204	691B	pre	baseline	baseline_pre	baseline_pre_204	baseline	baseline
+X213.0433.final	213	433	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.0433.pre	213	433	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X213.0F6A.final	213	0F6A	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.0F6A.pre	213	0F6A	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X213.1B7C.final	213	1B7C	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.1B7C.pre	213	1B7C	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X213.3451.final	213	3451	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.3451.pre	213	3451	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X213.3C4E.final	213	3C4E	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.3C4E.pre	213	3C4E	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X213.4410.final	213	4410	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.4410.pre	213	4410	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X213.496F.final	213	496F	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.496F.pre	213	496F	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X213.5D38.final	213	5D38	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.5D38.pre	213	5D38	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X213.6224.final	213	6224	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.6224.pre	213	6224	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X213.7B56.final	213	7B56	final	baseline	baseline_final	baseline_final_213	baseline	baseline
+X213.7B56.pre	213	7B56	pre	baseline	baseline_pre	baseline_pre_213	baseline	baseline
+X214.0446.final	214	446	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X214.3644.final	214	3644	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X214.532E.final	214	532E	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X214.5D46.final	214	5D46	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X214.665B.final	214	665B	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X214.6951.final	214	6951	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X214.7250.final	214	7250	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X214.7715.final	214	7715	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X214.7A4F.final	214	7A4F	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X214.7B6C.final	214	7B6C	final	ISS_G	ISS_G_final	ISS_G_final_214	ISS_G	ISS_G
+X215.0302.final	215	302	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.0302.pre	215	302	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.0302.t.1	215	302	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.0302.t.2	215	302	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X215.0646.final	215	646	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.0646.pre	215	646	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.0646.t.1	215	646	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.0646.t.2	215	646	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X215.0B2B.final	215	0B2B	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.0B2B.pre	215	0B2B	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.0B2B.t.1	215	0B2B	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.0B2B.t.2	215	0B2B	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X215.0B59.final	215	0B59	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.0B59.pre	215	0B59	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.0B59.t.1	215	0B59	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.0B59.t.2	215	0B59	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X215.340E.final	215	340E	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.340E.pre	215	340E	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.340E.t.1	215	340E	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.340E.t.2	215	340E	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X215.406C.final	215	406C	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.406C.pre	215	406C	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.406C.t.1	215	406C	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.406C.t.2	215	406C	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X215.471D.final	215	471D	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.471D.pre	215	471D	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.471D.t.1	215	471D	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.471D.t.2	215	471D	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X215.591C.final	215	591C	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.591C.pre	215	591C	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.591C.t.1	215	591C	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.591C.t.2	215	591C	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X215.6E50.final	215	6.00E+50	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.6E50.pre	215	6.00E+50	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.6E50.t.1	215	6.00E+50	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.6E50.t.2	215	6.00E+50	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X215.7262.final	215	7262	final	LAR_G	LAR_G_final	LAR_G_final_215	final LAR_G	final
+X215.7262.pre	215	7262	pre	LAR_G	LAR_G_pre	LAR_G_pre_215	t.0 - Pre Launch LAR_G	t.0 - Pre Launch
+X215.7262.t.1	215	7262	t.1	LAR_G	LAR_G_t.1	LAR_G_t.1_215	t.1 - 4 Weeks LAR_G	t.1 - 4 Weeks
+X215.7262.t.2	215	7262	t.2	LAR_G	LAR_G_t.2	LAR_G_t.2_215	t.2 - 8 Weeks LAR_G	t.2 - 8 Weeks
+X216.0023.final	216	23	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.0023.pre	216	23	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.0023.t.1	216	23	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.0023.t.2	216	23	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X216.167D.final	216	167D	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.167D.pre	216	167D	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.167D.t.1	216	167D	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.167D.t.2	216	167D	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X216.2D17.final	216	2D17	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.2D17.pre	216	2D17	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.2D17.t.1	216	2D17	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.2D17.t.2	216	2D17	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X216.4D34.final	216	4D34	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.4D34.pre	216	4D34	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.4D34.t.1	216	4D34	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.4D34.t.2	216	4D34	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X216.5D52.final	216	5D52	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.5D52.pre	216	5D52	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.5D52.t.1	216	5D52	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.5D52.t.2	216	5D52	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X216.671C.final	216	671C	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.671C.pre	216	671C	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.671C.t.1	216	671C	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.671C.t.2	216	671C	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X216.6807.final	216	6807	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.6807.pre	216	6807	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.6807.t.1	216	6807	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.6807.t.2	216	6807	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X216.737F.final	216	737F	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.737F.pre	216	737F	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.737F.t.1	216	737F	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.737F.t.2	216	737F	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X216.7C29.final	216	7C29	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.7C29.pre	216	7C29	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.7C29.t.1	216	7C29	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.7C29.t.2	216	7C29	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X216.7D1C.final	216	7D1C	final	LAR	LAR_final	LAR_final_216	final LAR	final
+X216.7D1C.pre	216	7D1C	pre	LAR	LAR_pre	LAR_pre_216	t.0 - Pre Launch LAR	t.0 - Pre Launch
+X216.7D1C.t.1	216	7D1C	t.1	LAR	LAR_t.1	LAR_t.1_216	t.1 - 4 Weeks LAR	t.1 - 4 Weeks
+X216.7D1C.t.2	216	7D1C	t.2	LAR	LAR_t.2	LAR_t.2_216	t.2 - 8 Weeks LAR	t.2 - 8 Weeks
+X217.1568.final	217	1568	final	ISS	ISS_final	ISS_final_217	ISS	ISS
+X217.1F0C.final	217	1F0C	final	ISS	ISS_final	ISS_final_217	ISS	ISS
+X217.277A.final	217	277A	final	ISS	ISS_final	ISS_final_217	ISS	ISS
+X217.4C21.final	217	4C21	final	ISS	ISS_final	ISS_final_217	ISS	ISS
+X217.5222.final	217	5222	final	ISS	ISS_final	ISS_final_217	ISS	ISS
+X217.5C41.final	217	5C41	final	ISS	ISS_final	ISS_final_217	ISS	ISS
+X217.5E1B.final	217	5E1B	final	ISS	ISS_final	ISS_final_217	ISS	ISS
+X217.6216.final	217	6216	final	ISS	ISS_final	ISS_final_217	ISS	ISS
+X217.6951.final	217	6951	final	ISS	ISS_final	ISS_final_217	ISS	ISS
+X217.7D73.final	217	7D73	final	ISS	ISS_final	ISS_final_217	ISS	ISS

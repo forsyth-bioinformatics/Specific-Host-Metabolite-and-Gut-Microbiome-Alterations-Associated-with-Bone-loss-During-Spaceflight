@@ -1,0 +1,287 @@
+Kingdom	Phylum	Class	Order	Family	Genus	Species
+seq1	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	human gut metagenome
+seq2	Bacteria	Verrucomicrobia	Verrucomicrobiae	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia sp. UNK.MGS-1
+seq3	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	[Eubacterium] coprostanoligenes group	human gut metagenome
+seq4	Bacteria	Deferribacteres	Deferribacteres	Deferribacterales	Deferribacteraceae	Mucispirillum	Mucispirillum schaedleri ASF457
+seq5	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium AJ110941
+seq6	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium DW17
+seq7	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium 28-4
+seq8	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	[Clostridium asparagiforme] DSM 15981
+seq9	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Eisenbergiella	Eisenbergiella tayi
+seq10	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Erysipelatoclostridium	[Clostridium] cocleatum
+seq11	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	mouse gut metagenome
+seq12	Bacteria	Firmicutes	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus apodemi DSM 16634 = JCM 16172
+seq13	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium 28-4
+seq14	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Lachnospiraceae bacterium 5_1_57FAA
+seq15	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridium fusiformis
+seq16	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	[Clostridium asparagiforme] DSM 15981
+seq17	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Anaerotruncus	Anaerotruncus sp. G3(2012)
+seq18	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium AJ110941
+seq19	Bacteria	Firmicutes	Clostridia	Clostridiales	Peptostreptococcaceae	Romboutsia	Romboutsia ilealis
+seq20	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Hungatella	human gut metagenome
+seq21	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Roseburia	Clostridiales bacterium CIEAF 017
+seq22	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	mouse gut metagenome
+seq23	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	bacterium enrichment culture
+seq24	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium 6	[Eubacterium] siraeum V10Sc8a
+seq25	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	GCA-900066575	Lachnospiraceae bacterium DW67
+seq26	Bacteria	Proteobacteria	Gammaproteobacteria	Enterobacteriales	Enterobacteriaceae	Escherichia-Shigella	Triticum aestivum (bread wheat)
+seq27	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	mouse gut metagenome
+seq28	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	gut metagenome
+seq29	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-010	metagenome
+seq30	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	[Clostridium] symbiosum ATCC 14940
+seq31	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium G11
+seq32	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Roseburia	Clostridium sp. Clone-44
+seq33	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Lachnospiraceae bacterium DW3
+seq34	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium DW17
+seq35	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Marvinbryantia	Clostridiales bacterium CIEAF 012
+seq36	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	A2	Lachnospiraceae bacterium A2
+seq37	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Clostridiales bacterium VE202-06
+seq38	Bacteria	Firmicutes	Clostridia	Clostridiales	Clostridiaceae 1	Clostridium sensu stricto 1	Clostridium saudiense
+seq39	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-004	human gut metagenome
+seq40	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] fissicatena group	Eubacteriaceae bacterium DSY8
+seq41	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] fissicatena group	Eubacteriaceae bacterium DSY8
+seq42	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Acetatifactor	Salmonella enterica subsp. enterica
+seq43	Bacteria	Firmicutes	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus apodemi DSM 16634 = JCM 16172
+seq44	Bacteria	Firmicutes	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus apodemi DSM 16634 = JCM 16172
+seq45	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium 5	Clostridium sp. Culture Jar-8
+seq46	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Angelakisella	Angelakisella massiliensis
+seq47	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Shuttleworthia	Oscillospiraceae bacterium Zagget4
+seq48	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium 5	Clostridiaceae bacterium DJF_LS40
+seq49	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Roseburia	metagenome
+seq50	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Tyzzerella	Clostridiaceae bacterium SH021
+seq51	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium A4
+seq52	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Flavonifractor	Lachnospiraceae bacterium 7_1_58FAA
+seq53	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	metagenome
+seq54	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Oscillibacter	Oscillibacter sp. 1-3
+seq55	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	GCA-900066575	metagenome
+seq56	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae UCG-006	Clostridium sp. ASF502
+seq57	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	human gut metagenome
+seq58	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae UCG-004	metagenome
+seq59	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] ventriosum group	human gut metagenome
+seq60	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium	[Clostridium] leptum
+seq61	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Marvinbryantia	metagenome
+seq62	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Acetatifactor	Salmonella enterica subsp. enterica
+seq63	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium	[Clostridium] leptum
+seq64	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Flavonifractor	Clostridiales bacterium 30-4c
+seq65	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	ASF356	Clostridium sp. ASF356
+seq66	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Roseburia	Lachnospiraceae bacterium DW52
+seq67	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Acetatifactor	Salmonella enterica subsp. enterica
+seq68	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Candidatus Stoquefichus	Candidatus Stoquefichus sp. KLE1796
+seq69	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Flavonifractor	Pseudoflavonifractor capillosus
+seq70	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Dorea	metagenome
+seq71	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	mouse gut metagenome
+seq72	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium DW17
+seq73	Bacteria	Firmicutes	Clostridia	Clostridiales	Peptostreptococcaceae	Romboutsia	Clostridium sp. enrichment culture
+seq74	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Hungatella	human gut metagenome
+seq75	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae UCG-001	metagenome
+seq76	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium 9	Clostridiales bacterium CIEAF 026
+seq77	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Candidatus Soleaferrea	Candidatus Soleaferrea massiliensis
+seq78	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	UC5-1-2E3	Clostridia bacterium UC5.1-2E3
+seq79	Bacteria	Firmicutes	Bacilli	Lactobacillales	Streptococcaceae	Lactococcus	Lactococcus lactis subsp. lactis A12
+seq80	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium 613
+seq81	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridium sp. M62/1
+seq82	Bacteria	Firmicutes	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus saprophyticus subsp. saprophyticus
+seq83	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Dorea sp. 5-2
+seq84	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Murimonas	Murimonas intestini
+seq85	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium 9	bacterium enrichment culture clone M244
+seq86	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae UCG-006	Clostridium sp. ASF502
+seq87	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	metagenome
+seq88	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium 5	[Clostridium] indolis DSM 755
+seq89	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium 6_1_63FAA
+seq90	Bacteria	Firmicutes	Clostridia	Clostridiales	Christensenellaceae	Christensenellaceae R-7 group	Blattella germanica (German cockroach)
+seq91	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Marvinbryantia	metagenome
+seq92	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Acetatifactor	Salmonella enterica subsp. enterica
+seq93	Bacteria	Firmicutes	Clostridia	Clostridiales	Gracilibacteraceae	Gracilibacter	Clostridium sp. FCB90-3
+seq94	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Flavonifractor	Clostridiales bacterium 30-4c
+seq95	Bacteria	Firmicutes	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus lentus F1142
+seq96	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium	mouse gut metagenome
+seq97	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Hungatella	Hungatella hathewayi VE202-11
+seq98	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	GCA-900066575	metagenome
+seq99	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Turicibacter	Salmonella enterica subsp. enterica serovar Typhimurium
+seq100	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-013	metagenome
+seq101	Bacteria	Firmicutes	Clostridia	Clostridiales	Gracilibacteraceae	Gracilibacter	Clostridium sp. FCB90-3
+seq102	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	UC5-1-2E3	Clostridia bacterium UC5.1-2E3
+seq103	Bacteria	Firmicutes	Clostridia	Clostridiales	Peptostreptococcaceae	Clostridioides	Clostridioides difficile P33
+seq104	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	GCA-900066575	metagenome
+seq105	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Oscillibacter	[Clostridium] leptum
+seq106	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] fissicatena group	Eubacterium sp. SB2
+seq107	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Acetatifactor	Salmonella enterica subsp. enterica
+seq108	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridium sp. M62/1
+seq109	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-002	bacterium enrichment culture
+seq110	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Angelakisella	Angelakisella massiliensis
+seq111	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	bacterium NLAE-zl-C350
+seq112	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium 5	gut metagenome
+seq113	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Dorea	metagenome
+seq114	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	gut metagenome
+seq115	Bacteria	Firmicutes	Clostridia	Clostridiales	Family XIII	Family XIII AD3011 group	metagenome
+seq116	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae UCG-004	metagenome
+seq117	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Erysipelatoclostridium	Clostridiales bacterium CHKCI006
+seq118	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium 9	Clostridiales bacterium CIEAF 026
+seq119	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Clostridiales bacterium CIEAF 020
+seq120	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	[Clostridium] innocuum group	Erysipelotrichaceae bacterium 21_3
+seq121	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	[Clostridium asparagiforme] DSM 15981
+seq122	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	GCA-900066575	metagenome
+seq123	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	UC5-1-2E3	Clostridia bacterium UC5.1-2E3
+seq124	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	gut metagenome
+seq125	Bacteria	Actinobacteria	Actinobacteria	Corynebacteriales	Corynebacteriaceae	Corynebacterium 1	Corynebacterium jeikeium
+seq126	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	metagenome
+seq127	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridiales bacterium 1_7_47FAA
+seq128	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium 28-4
+seq129	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium A4
+seq130	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	metagenome
+seq131	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] xylanophilum group	mouse gut metagenome
+seq132	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridium sp. cTPY-12
+seq133	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Acetatifactor	Acetatifactor muris
+seq134	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] xylanophilum group	metagenome
+seq135	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Holdemania	metagenome
+seq136	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridium sp. M62/1
+seq137	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridium sp. VE202-10
+seq138	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	[Clostridium] oroticum
+seq139	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium	[Clostridium] leptum
+seq140	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Lachnospiraceae bacterium DW22
+seq141	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Acetatifactor	Salmonella enterica subsp. enterica
+seq142	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Harryflintia	Provencibacterium massiliense
+seq143	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Breznakia	Breznakia pachnodae
+seq144	Bacteria	Firmicutes	Clostridia	Clostridiales	Peptococcaceae	Dehalobacterium	Dehalobacterium formicoaceticum
+seq145	Bacteria	Actinobacteria	Coriobacteriia	Coriobacteriales	Eggerthellaceae	Adlercreutzia	Asaccharobacter celatus
+seq146	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Negativibacillus	human gut metagenome
+seq147	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	UBA1819	Eubacterium sp. UNK.MGS-26
+seq148	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Coprobacillus	Coprobacillus sp. 29_1
+seq149	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Holdemania	Holdemania sp. Marseille-P2844
+seq150	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Oscillibacter	Salmonella enterica subsp. enterica
+seq151	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Marvinbryantia	metagenome
+seq152	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	GCA-900066575	metagenome
+seq153	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	GCA-900066575	metagenome
+seq154	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	A2	mouse gut metagenome
+seq155	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Acetivibrio] ethanolgignens group	Acetivibrio ethanolgignens
+seq156	Bacteria	Firmicutes	Clostridia	Clostridiales	Peptococcaceae	Dehalobacterium	Dehalobacterium formicoaceticum
+seq157	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Faecalitalea	[Eubacterium] dolichum
+seq158	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Ruminococcus sp. DJF_VR67
+seq159	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	A2	Lachnospiraceae bacterium 3-1
+seq160	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	human gut metagenome
+seq161	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	gut metagenome
+seq162	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Tyzzerella	Clostridiaceae bacterium SH021
+seq163	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridium sp. M62/1
+seq164	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae UCG-001	metagenome
+seq165	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium	Massilioclostridium coli
+seq166	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Roseburia	mouse gut metagenome
+seq167	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae UCG-001	metagenome
+seq168	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Oscillibacter	Oscillibacter sp. Marseille-P3302
+seq169	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides thetaiotaomicron
+seq170	Bacteria	Firmicutes	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus saprophyticus subsp. saprophyticus
+seq171	Bacteria	Proteobacteria	Gammaproteobacteria	Enterobacteriales	Enterobacteriaceae	Klebsiella	Klebsiella oxytoca KA-2
+seq172	Bacteria	Firmicutes	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus faecalis
+seq173	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Anaerotruncus	Clostridiales bacterium JN18_V41_S
+seq174	Bacteria	Firmicutes	Clostridia	Clostridiales	Clostridiaceae 1	Clostridium sensu stricto 1	Clostridium saudiense
+seq175	Bacteria	Firmicutes	Bacilli	Lactobacillales	Lactobacillaceae	Lactobacillus	Lactobacillus johnsonii
+seq176	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Papillibacter	Papillibacter cinnamivorans DSM 12816
+seq177	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium 9	Firmicutes bacterium ASF500
+seq178	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lactonifactor	Lactonifactor longoviformis DSM 17459
+seq179	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Intestinimonas	Intestinimonas butyriciproducens
+seq180	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridiales bacterium 1_7_47FAA
+seq181	Bacteria	Tenericutes	Mollicutes	Mollicutes RF39	gut metagenome		
+seq182	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	gut metagenome
+seq183	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Eisenbergiella	Clostridiales bacterium VE202-27
+seq184	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Erysipelatoclostridium	Clostridiales bacterium CHKCI006
+seq185	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Candidatus Soleaferrea	Blattella germanica (German cockroach)
+seq186	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	human gut metagenome
+seq187	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium 28-4
+seq188	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Faecalibaculum	Faecalibaculum rodentium
+seq189	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	metagenome
+seq190	Bacteria	Firmicutes	Bacilli	Lactobacillales	Streptococcaceae	Streptococcus	Streptococcus equinus
+seq191	Bacteria	Tenericutes	Mollicutes	Mollicutes RF39	gut metagenome		
+seq192	Bacteria	Firmicutes	Bacilli	Lactobacillales	Enterococcaceae	Enterococcus	Enterococcus casseliflavus
+seq193	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospira	human gut metagenome
+seq194	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	metagenome
+seq195	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] xylanophilum group	mouse gut metagenome
+seq196	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Anaerostipes	Anaerostipes sp. 3_2_56FAA
+seq197	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides ovatus 3_8_47FAA
+seq198	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	ASF356	Clostridium sp. ASF356
+seq199	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium DW59
+seq200	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Intestinimonas	Intestinimonas massiliensis
+seq201	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	A2	Lachnospiraceae bacterium 3-1
+seq202	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	Salmonella enterica subsp. enterica serovar Typhimurium
+seq203	Bacteria	Verrucomicrobia	Verrucomicrobiae	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia sp. UNK.MGS-1
+seq204	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	[Clostridium asparagiforme] DSM 15981
+seq205	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Acetivibrio] ethanolgignens group	Acetivibrio ethanolgignens
+seq206	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Marvinbryantia	metagenome
+seq207	Bacteria	Firmicutes	Clostridia	Clostridiales	Family XIII	Family XIII AD3011 group	metagenome
+seq208	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	[Clostridium] aldenense
+seq209	Bacteria	Firmicutes	Erysipelotrichia	Erysipelotrichales	Erysipelotrichaceae	Dubosiella	Dubosiella newyorkensis
+seq210	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] ventriosum group	human gut metagenome
+seq211	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium 28-4
+seq212	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	Salmonella enterica subsp. enterica	
+seq213	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	Muribaculum	Parabacteroides sp. YL27
+seq214	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Clostridium sp. VE202-10
+seq215	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae UCG-001	metagenome
+seq216	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ethanoligenens	mesophilic bacterium enrichment culture clone OTU_2
+seq217	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] ventriosum group	rumen bacterium 2/9293-18
+seq218	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides sp. 14(A)
+seq219	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospira	metagenome
+seq220	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	Muribaculum	Parabacteroides sp. YL27
+seq221	Bacteria	Firmicutes	Clostridia	Clostridiales	Christensenellaceae	Christensenellaceae R-7 group	human gut metagenome
+seq222	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Blattella germanica (German cockroach)
+seq223	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides acidifaciens
+seq224	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Dorea	metagenome
+seq225	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	human gut metagenome
+seq226	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	[Eubacterium] xylanophilum group	Lachnospiraceae bacterium DW60
+seq227	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	mouse gut metagenome	
+seq228	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Hydrogenoanaerobacterium	bacterium enrichment culture clone MS20
+seq229	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	Muribaculum	Parabacteroides sp. YL27
+seq230	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Murimonas	Murimonas intestini
+seq231	Bacteria	Firmicutes	Clostridia	Clostridiales	Peptostreptococcaceae	Clostridioides	Clostridioides difficile
+seq232	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Butyricicoccus	bacterium NLAE-zl-H60
+seq233	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	[Clostridium] clostridioforme 90B1
+seq234	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	mouse gut metagenome	
+seq235	Bacteria	Firmicutes	Clostridia	Clostridiales	Eubacteriaceae	Anaerofustis	Anaerofustis stercorihominis DSM 17244
+seq236	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Prevotellaceae	Prevotella 1	wallaby gut metagenome
+seq237	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	UC5-1-2E3	Clostridia bacterium UC5.1-2E3
+seq238	Bacteria	Firmicutes	Clostridia	Clostridiales	Christensenellaceae	Christensenellaceae R-7 group	iron-reducing bacterium enrichment culture clone HN117
+seq239	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminiclostridium	[Clostridium] methylpentosum DSM 5476
+seq240	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Harryflintia	Provencibacterium massiliense
+seq242	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	Gram-negative bacterium cTPY-13	
+seq243	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	gut metagenome	
+seq244	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Rikenellaceae	Alistipes	human gut metagenome
+seq245	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Clostridiales bacterium VE202-06
+seq246	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	gut metagenome
+seq247	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium 28-4
+seq248	Bacteria	Firmicutes	Clostridia	Thermoanaerobacterales	SRB2	Firmicutes bacterium CE17	
+seq249	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	mouse gut metagenome	
+seq250	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	gut metagenome	
+seq251	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae NK4A214 group	metagenome
+seq252	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Blattella germanica (German cockroach)
+seq253	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium 5	[Clostridium] indolis DSM 755
+seq254	Bacteria	Verrucomicrobia	Verrucomicrobiae	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia sp. UNK.MGS-1
+seq255	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	mouse gut metagenome
+seq256	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium AJ110941
+seq257	Bacteria	Firmicutes	Clostridia	Clostridiales	Peptostreptococcaceae	Romboutsia	Clostridium sp. enrichment culture
+seq258	Bacteria	Firmicutes	Clostridia	Clostridiales	Clostridiales vadinBB60 group	anaerobic digester metagenome	
+seq259	Bacteria	Tenericutes	Mollicutes	Mollicutes RF39	Firmicutes bacterium CAG:822		
+seq260	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	mouse gut metagenome
+seq261	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Tannerellaceae	Parabacteroides	Parabacteroides sp. D13
+seq262	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium 10-1
+seq263	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides uniformis
+seq264	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Agathobacter	metagenome
+seq265	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	gut metagenome
+seq266	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-014	gut metagenome
+seq267	Bacteria	Firmicutes	Clostridia	Clostridiales	Ruminococcaceae	Ruminococcaceae UCG-013	metagenome
+seq268	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Porphyromonadaceae	Porphyromonas	Porphyromonas sp. 2024b
+seq269	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	mouse gut metagenome	
+seq270	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Muribaculaceae	gut metagenome	
+seq271	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	human gut metagenome
+seq272	Bacteria	Bacteroidetes	Bacteroidia	Bacteroidales	Bacteroidaceae	Bacteroides	Bacteroides caccae
+seq273	Bacteria	Proteobacteria	Gammaproteobacteria	Betaproteobacteriales	Burkholderiaceae	Parasutterella	Proteobacteria bacterium CAG:139
+seq274	Bacteria	Firmicutes	Bacilli	Bacillales	Staphylococcaceae	Staphylococcus	Staphylococcus sciuri
+seq275	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	ASF356	Clostridium sp. ASF356
+seq276	Bacteria	Firmicutes	Clostridia	Clostridiales	Clostridiales vadinBB60 group	Coptotermes formosanus (Formosan subterranean termite)	
+seq277	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae UCG-001	metagenome
+seq278	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Acetatifactor	Salmonella enterica subsp. enterica
+seq279	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Blautia	Lachnospiraceae bacterium 6_1_63FAA
+seq281	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	mouse gut metagenome
+seq282	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Acetatifactor	Salmonella enterica subsp. enterica
+seq283	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	Lachnospiraceae bacterium 1_4_56FAA
+seq287	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Trichinella pseudospiralis
+seq304	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnoclostridium	[Clostridium asparagiforme] DSM 15981
+seq316	Bacteria	Firmicutes	Clostridia	Clostridiales	Lachnospiraceae	Lachnospiraceae NK4A136 group	Lachnospiraceae bacterium DW17
+seq320	Bacteria	Verrucomicrobia	Verrucomicrobiae	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia sp. UNK.MGS-1
+seq326	Bacteria	Verrucomicrobia	Verrucomicrobiae	Verrucomicrobiales	Akkermansiaceae	Akkermansia	Akkermansia sp. UNK.MGS-1
