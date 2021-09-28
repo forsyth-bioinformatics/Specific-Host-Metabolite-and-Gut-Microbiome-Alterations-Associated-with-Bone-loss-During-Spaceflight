@@ -1,0 +1,1486 @@
+
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ##################################
+> #    Load required libraries     #
+> ##################################
+> library(phyloseq)
+> library(vegan) # adonis
+Loading required package: permute
+Loading required package: lattice
+This is vegan 2.5-6
+> library(writexl)
+> library(ggplot2)
+> library(iNEXT)
+> library(readr)
+> library(dplyr) #select
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(metacoder)#filter_taxa function in conflict with phyloseq
+Loading required package: taxa
+
+Attaching package: ‘taxa’
+
+The following object is masked from ‘package:ggplot2’:
+
+    map_data
+
+The following object is masked from ‘package:phyloseq’:
+
+    filter_taxa
+
+This is metacoder verison 0.3.4 (stable)
+> library(writexl)                          
+> library(tidyr) #unite select
+> library(plyr)
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: ‘plyr’
+
+The following objects are masked from ‘package:dplyr’:
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+> ##################################
+> colors<-list();
+> colors[["ISS"]]<- "red"
+> colors[["ISS_G"]]<- "blue"
+> colors[["final LAR"]]<- "#FF7F00"
+> colors[["final LAR_G"]]<- "#666600"
+> colors[["t.2 - 8 Weeks LAR"]]<- "#FF4000"
+> colors[["t.1 - 4 Weeks LAR"]]<- "#FF4000"
+> colors[["t.0 - Pre Launch LAR"]]<- "#FF4000"
+> colors[["t.2 - 8 Weeks LAR_G"]]<- "#006600"
+> colors[["t.1 - 4 Weeks LAR_G"]]<- "#006600"
+> colors[["t.0 - Pre Launch LAR_G"]]<- "#006600"
+> colors[["baseline"]]<- "#444444"
+> load("../physeq.Rdata")
+> load("../meta.Rdata")
+> ps=physeq
+> rare=56000
+> ########### Comparison ###########
+> obj<-13
+> key1<-"Compare"
+> key2<-"TT"
+> comp1<-"t.2 - 8 Weeks LAR_G"
+> comp1a<-"t.2 - 8 Weeks LAR_G"
+> comp1filename<-"t2_LAR_G"
+> comp1title<-"End-Point LAR_G"
+> comp2<-"baseline_final"
+> comp2a<-"baseline"
+> comp2filename<-"baseline"
+> comp2title<-"Baseline"
+> 
+> ##################################
+> #     Top 20 Genera Box Plot     #
+> ##################################
+> #rare=56000
+> #library(phyloseq)
+> #library(ggplot2)
+> #
+> #load("physeq.Rdata")
+> #load("meta.Rdata")
+> #ps=physeq
+> ##################################
+> mycols=c("dodgerblue2", "#E31A1C", "green4", "#6A3D9A", "#FF7F00", "black",
++ "gold1", "skyblue2", "#FB9A99", "palegreen2", "#CAB2D6", "#FDBF6F",
++ "gray70", "khaki2", "maroon", "orchid1", "deeppink1", "blue1",
++ "steelblue4", "darkturquoise", "green1", "yellow4", "yellow3",
++ "darkorange4", "brown")
+> ##################################
+> level="Genus"
+> ##################################
+> make_ps <- function(){
++ 	script=paste0("subset_samples(ps,( ",key1," == comp1 | ",key2," == comp2))")
++ 	pss=eval(parse(text=script));
++ 	pssf=phyloseq::filter_taxa(pss, function(x) length(which(x >= 10))>=2 | sum(x) >= 100, TRUE)
++ 	pssfp=prune_samples(sample_sums(pssf)>=rare, pssf)
++ 	pssfpr<<-rarefy_even_depth(pssfp,rngseed=1,sample.size=rare,replace=F)
++ }
+> ##################################
+> make_melt <- function(cutoff=0.01){
++ 	psbargenus=tax_glom(pssfpr,"Genus")
++ 	psbarper=transform_sample_counts(psbargenus,function(x) x / sum (x))
++ 	ucount=0
++ 	ucount1=0
++ 	cutoff1=0
++ 	i=1
++ 	j=3
++ 	target=21
++ 	while(ucount!=target){
++ 		ps_melt<-psmelt(psbarper)
++ 		ps_melt$Genus<-as.character(ps_melt$Genus)
++ 		ps_melt$Genus[ps_melt$Abundance <=cutoff]<-"Other"
++ 		ps_melt$Genus<-gsub("\\[","",ps_melt$Genus)
++ 		ps_melt$Genus<-gsub("\\]","",ps_melt$Genus)
++ 		ucount=length(unique(ps_melt$Genus))
++ 		print(paste0(cutoff,"==",cutoff1,"****",ucount,"==",ucount1))
++ 		cutoff1=cutoff
++ 		if(ucount < target){
++ 			if(ucount1 > target){#revese direction and go by one more decimal
++ 				j=j+1;
++ 			}
++ 			script=paste0(i,"e-",j)
++ 			incr=eval(parse(text=script));
++ 			cutoff=cutoff-incr			
++ 		}else if(ucount > target){
++ 			if(ucount1 <target){#revese direction and go by one more decimal
++ 				j=j+1;
++ 			}
++ 			script=paste0(i,"e-",j)
++ 			incr=eval(parse(text=script));
++ 			cutoff=cutoff+incr
++ 		}
++ 		#i=i+1
++ 		ucount1=ucount
++ 	}
++ 	levels(ps_melt$Compare)[which(levels(ps_melt$Compare)==comp1a)]<-comp1title
++ 	levels(ps_melt$Compare)[which(levels(ps_melt$Compare)==comp2a)]<-comp2title	
++ 	ps21_melt<<-ps_melt
++ 	topct<<-ucount-1
++ }
+> ##################################
+> make_plot <- function(){
++ 	psmeltplot<-ggplot(data=ps21_melt,aes(x=Sample, y=Abundance, fill=Genus))+ ylab("Relative Abundance") +facet_wrap(~Compare, scales = "free_x",nrow=2) + geom_bar(aes(), stat="identity") + theme(axis.text.x = element_blank(),axis.ticks.x=element_blank()) +  guides(fill=guide_legend(ncol=1)) + scale_fill_manual(values=mycols)
++ 	pdf(paste0("Top_",topct,"_bar_plot_",comp1filename,"_vs_",comp2filename,"_",level,".pdf"),width=8,height=8)
++ 	print(psmeltplot)
++ 	dev.off()
++ }
+> ##################################
+> make_ps()
+`set.seed(1)` was used to initialize repeatable random subsampling.
+Please record this for your records so others can reproduce.
+Try `set.seed(1); .Random.seed` for the full vector
+...
+> make_melt()
+[1] "0.01==0****27==0"
+[1] "0.0101==0.01****27==27"
+[1] "0.0102==0.0101****27==27"
+[1] "0.0103==0.0102****27==27"
+[1] "0.0104==0.0103****27==27"
+[1] "0.0105==0.0104****27==27"
+[1] "0.0106==0.0105****27==27"
+[1] "0.0107==0.0106****26==27"
+[1] "0.0108==0.0107****26==26"
+[1] "0.0109==0.0108****26==26"
+[1] "0.011==0.0109****26==26"
+[1] "0.0111==0.011****26==26"
+[1] "0.0112==0.0111****26==26"
+[1] "0.0113==0.0112****26==26"
+[1] "0.0114==0.0113****26==26"
+[1] "0.0115==0.0114****25==26"
+[1] "0.0116==0.0115****24==25"
+[1] "0.0117==0.0116****24==24"
+[1] "0.0118==0.0117****23==24"
+[1] "0.0119==0.0118****23==23"
+[1] "0.012==0.0119****23==23"
+[1] "0.0121==0.012****22==23"
+[1] "0.0122==0.0121****22==22"
+[1] "0.0123==0.0122****21==22"
+> make_plot()
+null device 
+          1 
+> ##################################
+> #        FB Ratio Plot           #
+> ##################################
+> #rare=56000
+> #library(phyloseq)
+> #library(writexl)
+> #library(ggplot2)
+> #library(plyr)
+> ##################################
+> #load("../20200408_ISS_LAR/physeq.Rdata")
+> #load("../20200408_ISS_LAR/meta.Rdata")
+> #ps=physeq
+> ##################################
+> make_ps <- function(){
++ 	script=paste0("subset_samples(ps,( ",key1," == comp1 | ",key2," == comp2))")
++ 	pss=eval(parse(text=script));
++ 	pssf=phyloseq::filter_taxa(pss, function(x) length(which(x >= 10))>=2 | sum(x) >= 100, TRUE)
++ 	pssfp=prune_samples(sample_sums(pssf)>=rare, pssf)
++ 	pssfpr<<-rarefy_even_depth(pssfp,rngseed=1,sample.size=rare,replace=F)
++ }
+> ##################################
+> make_fbratio<-function(){
++ 	pssfpr_phylum=tax_glom(pssfpr,taxrank="Phylum")
++ 	phylum_tax=tax_table(pssfpr_phylum)[,"Phylum"]
++ 	phylum_otu=otu_table(pssfpr_phylum)
++ 	rownames(phylum_otu)=phylum_tax[,1]
++ 	phylum_otu_tax_per=phylum_otu/rep(colSums(phylum_otu),each=nrow(phylum_otu))
++ 	t_phylum_otu_tax_per=t(phylum_otu_tax_per)
++ 	fb=NULL
++ 	for (i in 1:length(t_phylum_otu_tax_per[,1])){fb=rbind(fb,t_phylum_otu_tax_per[i,])}
++ 	fb=cbind("SampleID"=rownames(t_phylum_otu_tax_per),fb)
++ 	fbdf=as.data.frame(fb)
++ 	meta.fb=meta[meta$X %in% fbdf$SampleID,]
++ 	names(meta.fb)[1]="SampleID"
++ 	fbdfm<<-merge(fbdf,meta.fb,by="SampleID")
++ 	fbratio<<-data.frame(
++ 		'fbratio'  =log2(as.numeric(as.character(fbdfm[,which(colnames(fbdfm)=="Firmicutes")]))/as.numeric(as.character(fbdfm[,which(colnames(fbdfm)=="Bacteroidetes")]))),
++ 		Treatment=fbdfm[,which(colnames(fbdfm)=="Compare")]
++ 	)
++ 	ttt=t.test(fbratio ~ Treatment, data=fbratio)
++ 	www=wilcox.test(fbratio ~ Treatment, data=fbratio)
++ 	fbratio$Treatment=factor(fbratio$Treatment) #reset factors/levels
++ 	color1=colors[[levels(fbratio$Treatment)[1]]]
++ 	color2=colors[[levels(fbratio$Treatment)[2]]]	
++ 	levels(fbratio$Treatment)[which(levels(fbratio$Treatment)==comp1a)]<-comp1title
++ 	levels(fbratio$Treatment)[which(levels(fbratio$Treatment)==comp2a)]<-comp2title
++ 	pdf(paste0("FB_ratios_boxplot_",comp1filename,"_vs_",comp2filename,".pdf"),width=5,height=5)
++ 	ppp=ggplot(fbratio,aes(x=Treatment,y=fbratio,color=Treatment))
++ 	ppp=ppp+stat_boxplot(geom='errorbar',width=0.5)+geom_boxplot()
++ 	ppp=ppp+theme(legend.position="none")+geom_jitter(width=0.1)
++ 	ppp=ppp+ggtitle("Firmicutes/Bacteroidetes Ratios",subtitle=paste0("p values: ",round(ttt$p.value,4)," (t-test); ",round(www$p.value,4)," (Wilcoxon)"))
++ 	ppp=ppp+labs(y="Log2 F/B Ratios")+theme(axis.text=element_text(size=10))
++ 	droplevels(fbratio$Treatment)
++ 	ppp=ppp+scale_fill_manual(values=c(color1, color2))+scale_color_manual(values=c(color1, color2))
++ 	print(ppp)
++ 	dev.off()
++ 	t.df=data.frame(
++ 	"t-test"=c(
++ 	"t value","fegree freedom","p value",
++ 	"95% confidence interval (lower)",
++ 	"95% confidence interval (higher)",
++ 	names(ttt$estimate[1]),
++  	names(ttt$estimate[2]),
++  	"stderr",
++  	"alternative hypothesis",
++  	"method",
++  	"data"
++ 	),
++  	"value"=c(
++  	ttt$statistic,
++  	ttt$parameter,
++  	ttt$p.value,
++  	ttt$conf.int[1],
++  	ttt$conf.int[2],
++  	ttt$estimate[1],
++  	ttt$estimate[2],
++  	ttt$stderr,
++  	"true difference in means is not equal to 0",
++  	ttt$method,
++  	ttt$data
++ 	))
++ 	w.df=data.frame(
++ 	"wilcox test"=
++ 	c(
++ 	"wilcox statistic","p value",
++  	"alternative hypothesis",
++  	"method",
++  	"data"
++ 	),
++  	"value"
++  	=c(
++  	www$statistic,
++  	www$p.value,
++  	" true location shift is not equal to 0",
++  	www$method,
++  	www$data
++ 	))	
++ 	write_xlsx(list('t.test'=t.df,'wilcox'=w.df),paste0("FB_Ratios_Statistics_",comp1filename,"_vs_",comp2filename,".xlsx"))
++ }
+> ##################################
+> make_fbstat<-function(){
++ 	phylum_per<-list(
++ 	tmp01=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp1a),which(colnames(fbdfm)=="Actinobacteria" )])),
++ 	tmp02=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp2a),which(colnames(fbdfm)=="Actinobacteria" )])),
++ 	tmp03=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp1a),which(colnames(fbdfm)=="Bacteroidetes"  )])),
++ 	tmp04=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp2a),which(colnames(fbdfm)=="Bacteroidetes"  )])),
++ 	tmp05=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp1a),which(colnames(fbdfm)=="Deferribacteres")])),
++ 	tmp06=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp2a),which(colnames(fbdfm)=="Deferribacteres")])),
++ 	tmp07=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp1a),which(colnames(fbdfm)=="Firmicutes"     )])),
++ 	tmp08=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp2a),which(colnames(fbdfm)=="Firmicutes"     )])),
++ 	tmp09=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp1a),which(colnames(fbdfm)=="Proteobacteria" )])),
++ 	tmp10=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp2a),which(colnames(fbdfm)=="Proteobacteria" )])),
++ 	tmp11=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp1a),which(colnames(fbdfm)=="Tenericutes"    )])),
++ 	tmp12=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp2a),which(colnames(fbdfm)=="Tenericutes"    )])),
++ 	tmp13=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp1a),which(colnames(fbdfm)=="Verrucomicrobia")])),
++ 	tmp14=as.numeric(as.character(fbdfm[which(fbdfm$Compare==comp2a),which(colnames(fbdfm)=="Verrucomicrobia")]))
++ 	)
++ 	names(phylum_per)=
++ 	c(
++ 	paste0("Actinobacteria" ,"_",comp1filename),
++ 	paste0("Actinobacteria" ,"_",comp2filename),
++ 	paste0("Bacteroidetes"  ,"_",comp1filename),
++ 	paste0("Bacteroidetes"  ,"_",comp2filename),
++ 	paste0("Deferribacteres","_",comp1filename),
++ 	paste0("Deferribacteres","_",comp2filename),
++ 	paste0("Firmicutes"     ,"_",comp1filename),
++ 	paste0("Firmicutes"     ,"_",comp2filename),
++ 	paste0("Proteobacteria" ,"_",comp1filename),
++ 	paste0("Proteobacteria" ,"_",comp2filename),
++ 	paste0("Tenericutes"    ,"_",comp1filename),
++ 	paste0("Tenericutes"    ,"_",comp2filename),
++ 	paste0("Verrucomicrobia","_",comp1filename),
++ 	paste0("Verrucomicrobia","_",comp2filename)
++ 	)
++ 	lll=ldply(phylum_per,rbind)
++ 	colnames(lll)[1]="Phylum/Sample"
++ 	write_xlsx(lll,paste0("Phylum_abundance_",comp1filename,"_vs_",comp2filename,".xlsx"))
++ }
+> ##################################
+> make_ps()
+`set.seed(1)` was used to initialize repeatable random subsampling.
+Please record this for your records so others can reproduce.
+Try `set.seed(1); .Random.seed` for the full vector
+...
+> make_fbratio()
+> make_fbstat()
+> ##############   ASV   ###########
+> level="ASV"
+> ps=physeq
+> ##################################
+> #    NMDS, iNEXT, MetacodeR      #
+> ##################################
+> #rare=56000
+> #library(phyloseq)
+> #library(vegan) # adonis
+> #library(writexl)
+> #library(ggplot2)
+> #library(iNEXT)
+> #library(readr)
+> #library(dplyr) #select
+> #library(metacoder)#filter_taxa function in conflict with phyloseq
+> #library(writexl)                          
+> #library(tidyr) #unite select
+> #library(plyr)
+> #colors<-list();
+> #colors[["ISS"]]<- "red"
+> #colors[["ISS_G"]]<- "blue"
+> #colors[["final LAR"]]<- "#00661A"
+> #colors[["final LAR_G"]]<- "#666600"
+> #colors[["t.2 - 8 Weeks LAR"]]<- "#0000B2"
+> #colors[["t.1 - 4 Weeks LAR"]]<- "#D93600"
+> #colors[["t.0 - Pre Launch LAR"]]<- "#7F00FF"
+> #colors[["t.2 - 8 Weeks LAR_G"]]<- "#006DD9"
+> #colors[["t.1 - 4 Weeks LAR_G"]]<- "#FF8000"
+> #colors[["t.0 - Pre Launch LAR_G"]]<- "#9673FF"
+> #colors[["baseline"]]<- "#444444"
+> ##################################
+> #load("../physeq.Rdata")
+> #load("../meta.Rdata")
+> #load("../inextout.ASV.Rdata")
+> ##################################
+> #ps=physeq
+> #ps=tax_glom(physeq,taxrank="Species")
+> #ps=tax_glom(physeq,taxrank="Genus")
+> #level="ASV";
+> #level="Species";
+> #level="Genus";
+> ##################################
+> make_ps <- function(){
++ 	script=paste0("subset_samples(ps,( ",key1," == comp1 | ",key2," == comp2))")
++ 	pss=eval(parse(text=script));
++ 	pssf=phyloseq::filter_taxa(pss, function(x) length(which(x >= 10))>=2 | sum(x) >= 100, TRUE)
++ 	pssfp=prune_samples(sample_sums(pssf)>=rare, pssf)
++ 	pssfpr<<-rarefy_even_depth(pssfp,rngseed=1,sample.size=rare,replace=F)
++ }
+> 
+> make_nmds_perma <- function(){
++ 	pssfpr.ord=phyloseq::ordinate(pssfpr,"NMDS","bray")
++ 	treatment_order=c(comp1a,comp2a)
++ 	p_pssfpr=phyloseq::plot_ordination(pssfpr,pssfpr.ord,type="samples",color="Compare") + labs(color = "Treatment") + geom_point(size=2) + stat_ellipse()  
++ 	p_pssfpr$data$Compare<-as.character(p_pssfpr$data$Compare)
++ 	p_pssfpr$data$Compare<-factor(p_pssfpr$data$Compare,levels=treatment_order)
++ 	pdf(paste0(level,"/NMDS_Bray_",comp1filename,".vs.",comp2filename,"_",level,".pdf"),width=6,height=6)
++ 	color1=colors[[levels(p_pssfpr$data$Compare)[1]]]
++ 	color2=colors[[levels(p_pssfpr$data$Compare)[2]]]
++ 	ppp=p_pssfpr + scale_color_manual(values=c(color1,color2),labels=c(comp1title,comp2title)) + ggtitle(paste0("Fecal ",comp1title," & ",comp2title," NMDS - ",level))
++ 	print(ppp)
++ 	dev.off()
++ 	bray_dist=phyloseq::distance(pssfpr, method="bray",type="samples")
++ 	dataframe=data.frame(sample_data(pssfpr))
++ 	pnova=adonis(bray_dist ~ Compare, data = dataframe)
++ 	write_xlsx(pnova$aov.tab,paste0(level,"/Permanova_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ }
+> 
+> make_inext <- function(){
++ 	pssfprfile=paste0(level,"/pssfpr_",comp1filename,".vs.",comp2filename,"_",level,".txt")
++ 	pssfprfile1=paste0(      "pssfpr_",comp1filename,".vs.",comp2filename,"_",level,".txt")
++ 	write.table(otu_table(pssfpr),pssfprfile,sep="\t",quote=FALSE)
++ 	system(paste0("../make_inext_table_ave.pl ",pssfprfile1," Compare ",level))
++ 	
++ 	inextfile=paste0(level,"/inext_list_",pssfprfile1);
++ 	inext.in=read_tsv(inextfile)
++ 	inext.out=iNEXT(as.list(inext.in),q=c(0,1,2),datatype="abundance",nboot=100)
++ 	script=paste0("inextout.",obj,".",level," <<- inext.out")
++ 	eval(parse(text=script));
++ 	script=paste0("save(inextout.",obj,".",level,",file='inextout.",obj,".",level,".Rdata')")
++ 	eval(parse(text=script));
++ 
++ }
+> 
+> make_gginext <- function(){
++ 	script=paste0("inext.out<-inextout.",obj,".",level)
++ 	#script=paste0("inext.out<-inextout.1.",level)	
++ 	eval(parse(text=script))
++ 	test<-sort(c(comp1title,comp2title))
++ 	if(test[1]==comp1title){
++ 		color1=colors[[comp1a]]
++ 		color2=colors[[comp2a]]
++ 	}else{
++ 		color1=colors[[comp2a]]
++ 		color2=colors[[comp1a]]	
++ 	}
++ #	color1=colors[[levels(inext.out$DataInfo$site)[1]]]
++ #	color2=colors[[levels(inext.out$DataInfo$site)[2]]]
++ 	names(inext.out$iNextEst)[which(names(inext.out$iNextEst)==comp1a)]<-comp1title
++ 	names(inext.out$iNextEst)[which(names(inext.out$iNextEst)==comp2a)]<-comp2title
++ 	ggiNEXTout=ggiNEXT(inext.out, type=1, facet.var="order") + facet_wrap(~order, scales="free", ncol=1) + theme_bw(base_size=12)
++ 	ggiNEXTout= ggiNEXTout + ggtitle(paste0("Sample-size based rarefaction and extrapolation sampling curves:\nFecal ",comp1title," vs ",comp2title," - ",level," level"))
++ 	ggiNEXTout= ggiNEXTout + xlab("Number of Sequences") + ylab(paste0(level," Diversity")) + scale_color_manual(values=c(color1,color2))
++ 	ppp=ggiNEXTout
++ 	pdf(paste0(level,"/iNEXT_Hill_Numbers_",comp1filename,".vs.",comp2filename,"_type1_",level,".pdf"),width=6,height=8)
++ 	print(ppp)
++ 	dev.off()
++ 	ggiNEXTout=ggiNEXT(inext.out, type=2, facet.var="order") + facet_wrap(~order, scales="free", ncol=1) + theme_bw(base_size=12)
++ 	ggiNEXTout= ggiNEXTout + ggtitle(paste0("Sample completeness curves:\nFecal ",comp1title," vs ",comp2title," - ",level," level"))
++ 	ggiNEXTout= ggiNEXTout + xlab("Number of Sequences") + ylab("Sample Coverage") + scale_color_manual(values=c(color1,color2))
++ 	ppp=ggiNEXTout
++ 	pdf(paste0(level,"/iNEXT_Hill_Numbers_",comp1filename,".vs.",comp2filename,"_type2_",level,".pdf"),width=6,height=4)
++ 	print(ppp)
++ 	dev.off()
++ 	ggiNEXTout=ggiNEXT(inext.out, type=3, facet.var="order") + facet_wrap(~order, scales="free", ncol=1) + theme_bw(base_size=12)
++ 	ggiNEXTout= ggiNEXTout + ggtitle(paste0("Coverage based rarefaction and extrapolation sampling curves:\nFecal ",comp1title," vs ",comp2title," - ",level," level"))
++ 	ggiNEXTout= ggiNEXTout + xlab("Sample Coverage") + ylab(paste0(level," Diversity")) + scale_color_manual(values=c(color1,color2))
++ 	ppp=ggiNEXTout
++ 	pdf(paste0(level,"/iNEXT_Hill_Numbers_",comp1filename,".vs.",comp2filename,"_type3_",level,".pdf"),width=6,height=8)
++ 	print(ppp)
++ 	dev.off()
++ }
+> 
+> inext_stat <- function(){
++ 	pssfprfile=paste0(level,"/pssfpr_",comp1filename,".vs.",comp2filename,"_",level,".txt")
++ 	system(paste0("../make_inext_table.pl ",pssfprfile," ",comp1filename,".vs.",comp2filename," ",level))
++ 	inext.all=read_tsv(paste0(level,"/inext_",comp1filename,".vs.",comp2filename,".txt"),cols(.default = col_double()),col_names=T)
++ 	inext.all.out<-iNEXT(as.list(inext.all),q=c(0,1,2),datatype="abundance",nboot=0,size=rare)
++ 	inext.all.out_iNextEst<-inext.all.out$iNextEst
++ 	inext.q123=NULL
++ 	for(i in 1:length(inext.all.out_iNextEst)) {
++ 		inext.q123=rbind(inext.q123,
++ 			cbind("name"=names(inext.all.out_iNextEst[i]),
++ 				select(filter(inext.all.out_iNextEst[[i]], m==rare & order==0),qD),
++ 				select(filter(inext.all.out_iNextEst[[i]], m==rare & order==1),qD),
++ 				select(filter(inext.all.out_iNextEst[[i]], m==rare & order==2),qD)
++ 			)
++ 		)
++ 	}
++ 	
++ 	meta1=meta[meta$X %in% inext.q123$name,]
++ 	names(meta1)[1]="SampleID"
++ 	colnames(inext.q123)=c("SampleID","qD0","qD1","qD2")
++ 	inext.q123m=merge(inext.q123,meta1,by="SampleID")
++ 	ttest_all.qD0=     t.test(qD0 ~ Compare, data=inext.q123m)
++ 	ttest_all.qD1=     t.test(qD1 ~ Compare, data=inext.q123m)
++ 	ttest_all.qD2=     t.test(qD2 ~ Compare, data=inext.q123m)
++ 	wtest_all.qD0=wilcox.test(qD0 ~ Compare, data=inext.q123m)
++ 	wtest_all.qD1=wilcox.test(qD1 ~ Compare, data=inext.q123m)
++ 	wtest_all.qD2=wilcox.test(qD2 ~ Compare, data=inext.q123m)
++ 	
++ 	ttest.rows=c("t statistic",
++ 	"degrees of freedom",  
++ 	"p.value",    
++ 	"confidence interval 1",  
++ 	"confidence interval 2",
++ 	"estimated mean 1",  
++ 	"estimated mean 1",
++ 	"stderr",     
++ 	"alternative hypothesis",
++ 	"t test method")
++ 	
++ 	ttest_all_qD0=c(
++ 	ttest_all.qD0$statistic,  
++ 	ttest_all.qD0$parameter,  
++ 	ttest_all.qD0$p.value,    
++ 	ttest_all.qD0$conf.int,   
++ 	ttest_all.qD0$estimate,   
++ 	ttest_all.qD0$stderr,     
++ 	ttest_all.qD0$alternative,
++ 	ttest_all.qD0$method)
++ 	
++ 	ttest_all_qD1=c(
++ 	ttest_all.qD1$statistic,  
++ 	ttest_all.qD1$parameter,  
++ 	ttest_all.qD1$p.value,    
++ 	ttest_all.qD1$conf.int,   
++ 	ttest_all.qD1$estimate,   
++ 	ttest_all.qD1$stderr,     
++ 	ttest_all.qD1$alternative,
++ 	ttest_all.qD1$method)
++ 			
++ 	ttest_all_qD2=c(
++ 	ttest_all.qD2$statistic,  
++ 	ttest_all.qD2$parameter,  
++ 	ttest_all.qD2$p.value,    
++ 	ttest_all.qD2$conf.int,   
++ 	ttest_all.qD2$estimate,   
++ 	ttest_all.qD2$stderr,     
++ 	ttest_all.qD2$alternative,
++ 	ttest_all.qD2$method)
++ 	
++ 	ttest_all=data.frame("Hill_Number"=ttest.rows,qD0=ttest_all_qD0,qD1=ttest_all_qD1,qD2=ttest_all_qD2)
++ 	
++ 	write_xlsx(ttest_all, paste0(level,"/Hill_numbers_",comp1filename,".vs.",comp2filename,"_T_test_",level,".xlsx"))
++ 	write_xlsx(inext.q123,paste0(level,"/Hill_numbers_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ 	
++ 	wtest.rows=c("w statistic",
++ 	"p.value",    
++ 	"alternative hypothesis",
++ 	"test method")
++ 	
++ 	wtest_all_qD0=c(
++ 	wtest_all.qD0$statistic,  
++ 	wtest_all.qD0$p.value,"true location shift is not equal to 0",   
++ 	wtest_all.qD0$method)
++ 	
++ 	wtest_all_qD1=c(
++ 	wtest_all.qD1$statistic,  
++ 	wtest_all.qD1$p.value,"true location shift is not equal to 0",   
++ 	wtest_all.qD1$method)
++ 	
++ 	wtest_all_qD2=c(
++ 	wtest_all.qD2$statistic,  
++ 	wtest_all.qD2$p.value,"true location shift is not equal to 0",   
++ 	wtest_all.qD2$method)
++ 	
++ 	wtest_all=data.frame("Hill_Number"=wtest.rows,qD0=wtest_all_qD0,qD1=wtest_all_qD1,qD2=wtest_all_qD2)
++ 	write_xlsx(wtest_all,paste0(level,"/Hill_numbers_",comp1filename,".vs.",comp2filename,"_Wilcox_ranksum_test_",level,".xlsx"))
++ }
+> 
+> ################################## metacoder
+> 
+> plot_body_site_diff <- function(x, site_1, site_2, output_name, seed = 1, outformat="svg", level="OTUs") {
++ 	if(level == "Genus"){
++ 	level1="Genera"
++ 	}else{
++ 	level1=level
++ 	}
++ 	set.seed(seed)
++ 	x %>%
++ 	mutate_obs("tax_prop", abundance = rowMeans(x$data$tax_prop[x$data$sample_data$sample_id])) %>%
++ 	filter_taxa(abundance >= 0.001, reassign_obs = FALSE) %>%
++ 	filter_taxa(taxon_names != "", reassign_obs = FALSE) %>% # Some taxonomic levels are not named
++ 	filter_obs("diff_table", treatment_1 %in% c(site_1, site_2), treatment_2 %in% c(site_1, site_2)) %>%
++ 	heat_tree(node_size_axis_label = paste0("Number of ",level1),
++ 	node_size = n_obs,
++ 	node_size_range=c(0.02,.06),
++ 	node_label_size_range=c(0.02,.04),
++ 	node_color_axis_label = "Log 2 ratio",
++ 	node_color = log2_median_ratio,
++ 	node_color_range = diverging_palette(),
++ 	node_color_trans = "linear",
++ 	initial_layout = "re", layout = "da",
++ 	node_color_interval = c(-5, 5),
++ 	edge_color_interval = c(-5, 5),
++ 	node_label = taxon_names,
++ 	output_file = paste0(output_name, "--", site_1, ".vs.", site_2, "_",level,".", outformat)
++ 	)
++ }
+> 
+> make_metacoder <- function(){
++ 	#mc=parse_phyloseq(pssfpr)
++ 	mc=parse_phyloseq(ps)
++ 	mc$data$otu_prop=calc_obs_props(mc,data="otu_table",cols=mc$data$sample_data$sample_id)
++ 	mc$data$tax_prop=calc_taxon_abund(mc,data="otu_prop",cols=mc$data$sample_data$sample_id)
++ 	comcol=mc$data$sample_data$Compare
++ 	mc$data$diff_table <- compare_groups(mc, data='tax_prop', cols= mc$data$sample_data$sample_id, groups= comcol,combinations = list(c(comp1a,comp2a)))
++ 	mc <- mutate_obs(mc, "diff_table", wilcox_p_value = p.adjust(wilcox_p_value, method = "fdr"), log2_median_ratio = ifelse(wilcox_p_value < 0.05 | is.na(wilcox_p_value), log2_median_ratio, 0))
++ 	outname<-paste0(level,"/MetacodeR")
++ 	plot_body_site_diff(mc,comp1a,comp2a,outname,1,"pdf",level)
++ 	taxonomy=classifications(mc)
++ 	difftable=cbind(taxonomy,mc$data$diff_table)
++ 	write_xlsx(difftable,paste0(level,"/MetacodeR_diff_table_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ 	taxprotable=cbind(taxonomy,mc$data$tax_prop)
++ 	write_xlsx(taxprotable,paste0(level,"/MetacodeR_tax_proportion_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ 	taxonomy=unite(mc$data$tax_data[,3:8], Taxonomy,c("Kingdom","Phylum","Class","Order","Family","Genus"), sep=";")
++ 	otuprotable=cbind(taxonomy,mc$data$otu_prop)
++ 	write_xlsx(otuprotable,paste0(level,"/MetacodeR_otu_proportion_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ }
+> 
+> 
+> ################################## perform by calling functions
+> make_metacoder()
+Calculating proportions from counts for 140 columns for 286 observations.
+Summing per-taxon counts from 140 columns for 329 taxa
+There were 50 or more warnings (use warnings() to see the first 50)
+> make_ps()
+`set.seed(1)` was used to initialize repeatable random subsampling.
+Please record this for your records so others can reproduce.
+Try `set.seed(1); .Random.seed` for the full vector
+...
+> make_nmds_perma()
+Square root transformation
+Wisconsin double standardization
+Run 0 stress 0.08848806 
+Run 1 stress 0.08872625 
+... Procrustes: rmse 0.003503116  max resid 0.01380274 
+Run 2 stress 0.08848806 
+... Procrustes: rmse 2.172802e-06  max resid 6.126013e-06 
+... Similar to previous best
+Run 3 stress 0.08848806 
+... New best solution
+... Procrustes: rmse 1.771981e-06  max resid 4.112657e-06 
+... Similar to previous best
+Run 4 stress 0.08848806 
+... Procrustes: rmse 5.61083e-06  max resid 9.655734e-06 
+... Similar to previous best
+Run 5 stress 0.08848806 
+... Procrustes: rmse 1.612294e-06  max resid 3.705703e-06 
+... Similar to previous best
+Run 6 stress 0.08848806 
+... Procrustes: rmse 9.501872e-06  max resid 2.625115e-05 
+... Similar to previous best
+Run 7 stress 0.1122923 
+Run 8 stress 0.08848806 
+... Procrustes: rmse 3.987205e-06  max resid 1.377521e-05 
+... Similar to previous best
+Run 9 stress 0.08848806 
+... Procrustes: rmse 1.34204e-06  max resid 3.632725e-06 
+... Similar to previous best
+Run 10 stress 0.1196146 
+Run 11 stress 0.08848806 
+... Procrustes: rmse 2.139146e-06  max resid 6.388275e-06 
+... Similar to previous best
+Run 12 stress 0.1216969 
+Run 13 stress 0.09825876 
+Run 14 stress 0.08872552 
+... Procrustes: rmse 0.003438028  max resid 0.01354745 
+Run 15 stress 0.09825877 
+Run 16 stress 0.1124555 
+Run 17 stress 0.08848806 
+... Procrustes: rmse 1.190878e-06  max resid 2.930136e-06 
+... Similar to previous best
+Run 18 stress 0.08848806 
+... Procrustes: rmse 7.59005e-06  max resid 2.12335e-05 
+... Similar to previous best
+Run 19 stress 0.08848806 
+... Procrustes: rmse 2.992233e-06  max resid 8.71386e-06 
+... Similar to previous best
+Run 20 stress 0.09825876 
+*** Solution reached
+> make_inext()
+X215.0646.t.2	56000
+X213.7B56.final	56000
+X204.362D.final	56000
+X204.0E29.final	56000
+X213.0F6A.final	56000
+X215.0B59.t.2	56000
+X213.0433.final	56000
+X215.340E.t.2	56000
+X213.5D38.final	56000
+X204.1D21.final	56000
+X215.471D.t.2	56000
+X213.6224.final	56000
+X204.4305.final	56000
+X213.4410.final	56000
+X215.406C.t.2	56000
+X215.0302.t.2	56000
+X213.1B7C.final	56000
+X204.2401.final	56000
+X204.0A78.final	56000
+X215.7262.t.2	56000
+X204.691B.final	56000
+X213.3C4E.final	56000
+X215.591C.t.2	56000
+X215.6E50.t.2	56000
+X204.014D.final	56000
+X213.496F.final	56000
+X213.3451.final	56000
+X215.0B2B.t.2	56000
+X204.2B00.final	56000
+X204.3B49.final	56000
+Parsed with column specification:
+cols(
+  `t.2 - 8 Weeks LAR_G` = col_double(),
+  baseline = col_double()
+)
+> make_gginext()
+pdf 
+  2 
+> inext_stat()
+Warning message:
+In wilcox.test.default(x = c(150, 142, 153, 150, 147, 147, 149,  :
+  cannot compute exact p-value with ties
+> 
+> ############## Species ###########
+> level="Species"
+> ps=tax_glom(physeq,taxrank="Species")
+> ##################################
+> #    NMDS, iNEXT, MetacodeR      #
+> ##################################
+> #rare=56000
+> #library(phyloseq)
+> #library(vegan) # adonis
+> #library(writexl)
+> #library(ggplot2)
+> #library(iNEXT)
+> #library(readr)
+> #library(dplyr) #select
+> #library(metacoder)#filter_taxa function in conflict with phyloseq
+> #library(writexl)                          
+> #library(tidyr) #unite select
+> #library(plyr)
+> #colors<-list();
+> #colors[["ISS"]]<- "red"
+> #colors[["ISS_G"]]<- "blue"
+> #colors[["final LAR"]]<- "#00661A"
+> #colors[["final LAR_G"]]<- "#666600"
+> #colors[["t.2 - 8 Weeks LAR"]]<- "#0000B2"
+> #colors[["t.1 - 4 Weeks LAR"]]<- "#D93600"
+> #colors[["t.0 - Pre Launch LAR"]]<- "#7F00FF"
+> #colors[["t.2 - 8 Weeks LAR_G"]]<- "#006DD9"
+> #colors[["t.1 - 4 Weeks LAR_G"]]<- "#FF8000"
+> #colors[["t.0 - Pre Launch LAR_G"]]<- "#9673FF"
+> #colors[["baseline"]]<- "#444444"
+> ##################################
+> #load("../physeq.Rdata")
+> #load("../meta.Rdata")
+> #load("../inextout.ASV.Rdata")
+> ##################################
+> #ps=physeq
+> #ps=tax_glom(physeq,taxrank="Species")
+> #ps=tax_glom(physeq,taxrank="Genus")
+> #level="ASV";
+> #level="Species";
+> #level="Genus";
+> ##################################
+> make_ps <- function(){
++ 	script=paste0("subset_samples(ps,( ",key1," == comp1 | ",key2," == comp2))")
++ 	pss=eval(parse(text=script));
++ 	pssf=phyloseq::filter_taxa(pss, function(x) length(which(x >= 10))>=2 | sum(x) >= 100, TRUE)
++ 	pssfp=prune_samples(sample_sums(pssf)>=rare, pssf)
++ 	pssfpr<<-rarefy_even_depth(pssfp,rngseed=1,sample.size=rare,replace=F)
++ }
+> 
+> make_nmds_perma <- function(){
++ 	pssfpr.ord=phyloseq::ordinate(pssfpr,"NMDS","bray")
++ 	treatment_order=c(comp1a,comp2a)
++ 	p_pssfpr=phyloseq::plot_ordination(pssfpr,pssfpr.ord,type="samples",color="Compare") + labs(color = "Treatment") + geom_point(size=2) + stat_ellipse()  
++ 	p_pssfpr$data$Compare<-as.character(p_pssfpr$data$Compare)
++ 	p_pssfpr$data$Compare<-factor(p_pssfpr$data$Compare,levels=treatment_order)
++ 	pdf(paste0(level,"/NMDS_Bray_",comp1filename,".vs.",comp2filename,"_",level,".pdf"),width=6,height=6)
++ 	color1=colors[[levels(p_pssfpr$data$Compare)[1]]]
++ 	color2=colors[[levels(p_pssfpr$data$Compare)[2]]]
++ 	ppp=p_pssfpr + scale_color_manual(values=c(color1,color2),labels=c(comp1title,comp2title)) + ggtitle(paste0("Fecal ",comp1title," & ",comp2title," NMDS - ",level))
++ 	print(ppp)
++ 	dev.off()
++ 	bray_dist=phyloseq::distance(pssfpr, method="bray",type="samples")
++ 	dataframe=data.frame(sample_data(pssfpr))
++ 	pnova=adonis(bray_dist ~ Compare, data = dataframe)
++ 	write_xlsx(pnova$aov.tab,paste0(level,"/Permanova_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ }
+> 
+> make_inext <- function(){
++ 	pssfprfile=paste0(level,"/pssfpr_",comp1filename,".vs.",comp2filename,"_",level,".txt")
++ 	pssfprfile1=paste0(      "pssfpr_",comp1filename,".vs.",comp2filename,"_",level,".txt")
++ 	write.table(otu_table(pssfpr),pssfprfile,sep="\t",quote=FALSE)
++ 	system(paste0("../make_inext_table_ave.pl ",pssfprfile1," Compare ",level))
++ 	
++ 	inextfile=paste0(level,"/inext_list_",pssfprfile1);
++ 	inext.in=read_tsv(inextfile)
++ 	inext.out=iNEXT(as.list(inext.in),q=c(0,1,2),datatype="abundance",nboot=100)
++ 	script=paste0("inextout.",obj,".",level," <<- inext.out")
++ 	eval(parse(text=script));
++ 	script=paste0("save(inextout.",obj,".",level,",file='inextout.",obj,".",level,".Rdata')")
++ 	eval(parse(text=script));
++ 
++ }
+> 
+> make_gginext <- function(){
++ 	script=paste0("inext.out<-inextout.",obj,".",level)
++ 	#script=paste0("inext.out<-inextout.1.",level)	
++ 	eval(parse(text=script))
++ 	test<-sort(c(comp1title,comp2title))
++ 	if(test[1]==comp1title){
++ 		color1=colors[[comp1a]]
++ 		color2=colors[[comp2a]]
++ 	}else{
++ 		color1=colors[[comp2a]]
++ 		color2=colors[[comp1a]]	
++ 	}
++ #	color1=colors[[levels(inext.out$DataInfo$site)[1]]]
++ #	color2=colors[[levels(inext.out$DataInfo$site)[2]]]
++ 	names(inext.out$iNextEst)[which(names(inext.out$iNextEst)==comp1a)]<-comp1title
++ 	names(inext.out$iNextEst)[which(names(inext.out$iNextEst)==comp2a)]<-comp2title
++ 	ggiNEXTout=ggiNEXT(inext.out, type=1, facet.var="order") + facet_wrap(~order, scales="free", ncol=1) + theme_bw(base_size=12)
++ 	ggiNEXTout= ggiNEXTout + ggtitle(paste0("Sample-size based rarefaction and extrapolation sampling curves:\nFecal ",comp1title," vs ",comp2title," - ",level," level"))
++ 	ggiNEXTout= ggiNEXTout + xlab("Number of Sequences") + ylab(paste0(level," Diversity")) + scale_color_manual(values=c(color1,color2))
++ 	ppp=ggiNEXTout
++ 	pdf(paste0(level,"/iNEXT_Hill_Numbers_",comp1filename,".vs.",comp2filename,"_type1_",level,".pdf"),width=6,height=8)
++ 	print(ppp)
++ 	dev.off()
++ 	ggiNEXTout=ggiNEXT(inext.out, type=2, facet.var="order") + facet_wrap(~order, scales="free", ncol=1) + theme_bw(base_size=12)
++ 	ggiNEXTout= ggiNEXTout + ggtitle(paste0("Sample completeness curves:\nFecal ",comp1title," vs ",comp2title," - ",level," level"))
++ 	ggiNEXTout= ggiNEXTout + xlab("Number of Sequences") + ylab("Sample Coverage") + scale_color_manual(values=c(color1,color2))
++ 	ppp=ggiNEXTout
++ 	pdf(paste0(level,"/iNEXT_Hill_Numbers_",comp1filename,".vs.",comp2filename,"_type2_",level,".pdf"),width=6,height=4)
++ 	print(ppp)
++ 	dev.off()
++ 	ggiNEXTout=ggiNEXT(inext.out, type=3, facet.var="order") + facet_wrap(~order, scales="free", ncol=1) + theme_bw(base_size=12)
++ 	ggiNEXTout= ggiNEXTout + ggtitle(paste0("Coverage based rarefaction and extrapolation sampling curves:\nFecal ",comp1title," vs ",comp2title," - ",level," level"))
++ 	ggiNEXTout= ggiNEXTout + xlab("Sample Coverage") + ylab(paste0(level," Diversity")) + scale_color_manual(values=c(color1,color2))
++ 	ppp=ggiNEXTout
++ 	pdf(paste0(level,"/iNEXT_Hill_Numbers_",comp1filename,".vs.",comp2filename,"_type3_",level,".pdf"),width=6,height=8)
++ 	print(ppp)
++ 	dev.off()
++ }
+> 
+> inext_stat <- function(){
++ 	pssfprfile=paste0(level,"/pssfpr_",comp1filename,".vs.",comp2filename,"_",level,".txt")
++ 	system(paste0("../make_inext_table.pl ",pssfprfile," ",comp1filename,".vs.",comp2filename," ",level))
++ 	inext.all=read_tsv(paste0(level,"/inext_",comp1filename,".vs.",comp2filename,".txt"),cols(.default = col_double()),col_names=T)
++ 	inext.all.out<-iNEXT(as.list(inext.all),q=c(0,1,2),datatype="abundance",nboot=0,size=rare)
++ 	inext.all.out_iNextEst<-inext.all.out$iNextEst
++ 	inext.q123=NULL
++ 	for(i in 1:length(inext.all.out_iNextEst)) {
++ 		inext.q123=rbind(inext.q123,
++ 			cbind("name"=names(inext.all.out_iNextEst[i]),
++ 				select(filter(inext.all.out_iNextEst[[i]], m==rare & order==0),qD),
++ 				select(filter(inext.all.out_iNextEst[[i]], m==rare & order==1),qD),
++ 				select(filter(inext.all.out_iNextEst[[i]], m==rare & order==2),qD)
++ 			)
++ 		)
++ 	}
++ 	
++ 	meta1=meta[meta$X %in% inext.q123$name,]
++ 	names(meta1)[1]="SampleID"
++ 	colnames(inext.q123)=c("SampleID","qD0","qD1","qD2")
++ 	inext.q123m=merge(inext.q123,meta1,by="SampleID")
++ 	ttest_all.qD0=     t.test(qD0 ~ Compare, data=inext.q123m)
++ 	ttest_all.qD1=     t.test(qD1 ~ Compare, data=inext.q123m)
++ 	ttest_all.qD2=     t.test(qD2 ~ Compare, data=inext.q123m)
++ 	wtest_all.qD0=wilcox.test(qD0 ~ Compare, data=inext.q123m)
++ 	wtest_all.qD1=wilcox.test(qD1 ~ Compare, data=inext.q123m)
++ 	wtest_all.qD2=wilcox.test(qD2 ~ Compare, data=inext.q123m)
++ 	
++ 	ttest.rows=c("t statistic",
++ 	"degrees of freedom",  
++ 	"p.value",    
++ 	"confidence interval 1",  
++ 	"confidence interval 2",
++ 	"estimated mean 1",  
++ 	"estimated mean 1",
++ 	"stderr",     
++ 	"alternative hypothesis",
++ 	"t test method")
++ 	
++ 	ttest_all_qD0=c(
++ 	ttest_all.qD0$statistic,  
++ 	ttest_all.qD0$parameter,  
++ 	ttest_all.qD0$p.value,    
++ 	ttest_all.qD0$conf.int,   
++ 	ttest_all.qD0$estimate,   
++ 	ttest_all.qD0$stderr,     
++ 	ttest_all.qD0$alternative,
++ 	ttest_all.qD0$method)
++ 	
++ 	ttest_all_qD1=c(
++ 	ttest_all.qD1$statistic,  
++ 	ttest_all.qD1$parameter,  
++ 	ttest_all.qD1$p.value,    
++ 	ttest_all.qD1$conf.int,   
++ 	ttest_all.qD1$estimate,   
++ 	ttest_all.qD1$stderr,     
++ 	ttest_all.qD1$alternative,
++ 	ttest_all.qD1$method)
++ 			
++ 	ttest_all_qD2=c(
++ 	ttest_all.qD2$statistic,  
++ 	ttest_all.qD2$parameter,  
++ 	ttest_all.qD2$p.value,    
++ 	ttest_all.qD2$conf.int,   
++ 	ttest_all.qD2$estimate,   
++ 	ttest_all.qD2$stderr,     
++ 	ttest_all.qD2$alternative,
++ 	ttest_all.qD2$method)
++ 	
++ 	ttest_all=data.frame("Hill_Number"=ttest.rows,qD0=ttest_all_qD0,qD1=ttest_all_qD1,qD2=ttest_all_qD2)
++ 	
++ 	write_xlsx(ttest_all, paste0(level,"/Hill_numbers_",comp1filename,".vs.",comp2filename,"_T_test_",level,".xlsx"))
++ 	write_xlsx(inext.q123,paste0(level,"/Hill_numbers_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ 	
++ 	wtest.rows=c("w statistic",
++ 	"p.value",    
++ 	"alternative hypothesis",
++ 	"test method")
++ 	
++ 	wtest_all_qD0=c(
++ 	wtest_all.qD0$statistic,  
++ 	wtest_all.qD0$p.value,"true location shift is not equal to 0",   
++ 	wtest_all.qD0$method)
++ 	
++ 	wtest_all_qD1=c(
++ 	wtest_all.qD1$statistic,  
++ 	wtest_all.qD1$p.value,"true location shift is not equal to 0",   
++ 	wtest_all.qD1$method)
++ 	
++ 	wtest_all_qD2=c(
++ 	wtest_all.qD2$statistic,  
++ 	wtest_all.qD2$p.value,"true location shift is not equal to 0",   
++ 	wtest_all.qD2$method)
++ 	
++ 	wtest_all=data.frame("Hill_Number"=wtest.rows,qD0=wtest_all_qD0,qD1=wtest_all_qD1,qD2=wtest_all_qD2)
++ 	write_xlsx(wtest_all,paste0(level,"/Hill_numbers_",comp1filename,".vs.",comp2filename,"_Wilcox_ranksum_test_",level,".xlsx"))
++ }
+> 
+> ################################## metacoder
+> 
+> plot_body_site_diff <- function(x, site_1, site_2, output_name, seed = 1, outformat="svg", level="OTUs") {
++ 	if(level == "Genus"){
++ 	level1="Genera"
++ 	}else{
++ 	level1=level
++ 	}
++ 	set.seed(seed)
++ 	x %>%
++ 	mutate_obs("tax_prop", abundance = rowMeans(x$data$tax_prop[x$data$sample_data$sample_id])) %>%
++ 	filter_taxa(abundance >= 0.001, reassign_obs = FALSE) %>%
++ 	filter_taxa(taxon_names != "", reassign_obs = FALSE) %>% # Some taxonomic levels are not named
++ 	filter_obs("diff_table", treatment_1 %in% c(site_1, site_2), treatment_2 %in% c(site_1, site_2)) %>%
++ 	heat_tree(node_size_axis_label = paste0("Number of ",level1),
++ 	node_size = n_obs,
++ 	node_size_range=c(0.02,.06),
++ 	node_label_size_range=c(0.02,.04),
++ 	node_color_axis_label = "Log 2 ratio",
++ 	node_color = log2_median_ratio,
++ 	node_color_range = diverging_palette(),
++ 	node_color_trans = "linear",
++ 	initial_layout = "re", layout = "da",
++ 	node_color_interval = c(-5, 5),
++ 	edge_color_interval = c(-5, 5),
++ 	node_label = taxon_names,
++ 	output_file = paste0(output_name, "--", site_1, ".vs.", site_2, "_",level,".", outformat)
++ 	)
++ }
+> 
+> make_metacoder <- function(){
++ 	#mc=parse_phyloseq(pssfpr)
++ 	mc=parse_phyloseq(ps)
++ 	mc$data$otu_prop=calc_obs_props(mc,data="otu_table",cols=mc$data$sample_data$sample_id)
++ 	mc$data$tax_prop=calc_taxon_abund(mc,data="otu_prop",cols=mc$data$sample_data$sample_id)
++ 	comcol=mc$data$sample_data$Compare
++ 	mc$data$diff_table <- compare_groups(mc, data='tax_prop', cols= mc$data$sample_data$sample_id, groups= comcol,combinations = list(c(comp1a,comp2a)))
++ 	mc <- mutate_obs(mc, "diff_table", wilcox_p_value = p.adjust(wilcox_p_value, method = "fdr"), log2_median_ratio = ifelse(wilcox_p_value < 0.05 | is.na(wilcox_p_value), log2_median_ratio, 0))
++ 	outname<-paste0(level,"/MetacodeR")
++ 	plot_body_site_diff(mc,comp1a,comp2a,outname,1,"pdf",level)
++ 	taxonomy=classifications(mc)
++ 	difftable=cbind(taxonomy,mc$data$diff_table)
++ 	write_xlsx(difftable,paste0(level,"/MetacodeR_diff_table_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ 	taxprotable=cbind(taxonomy,mc$data$tax_prop)
++ 	write_xlsx(taxprotable,paste0(level,"/MetacodeR_tax_proportion_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ 	taxonomy=unite(mc$data$tax_data[,3:8], Taxonomy,c("Kingdom","Phylum","Class","Order","Family","Genus"), sep=";")
++ 	otuprotable=cbind(taxonomy,mc$data$otu_prop)
++ 	write_xlsx(otuprotable,paste0(level,"/MetacodeR_otu_proportion_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ }
+> 
+> 
+> ################################## perform by calling functions
+> make_metacoder()
+Calculating proportions from counts for 140 columns for 173 observations.
+Summing per-taxon counts from 140 columns for 314 taxa
+There were 50 or more warnings (use warnings() to see the first 50)
+> make_ps()
+`set.seed(1)` was used to initialize repeatable random subsampling.
+Please record this for your records so others can reproduce.
+Try `set.seed(1); .Random.seed` for the full vector
+...
+> make_nmds_perma()
+Square root transformation
+Wisconsin double standardization
+Run 0 stress 0.09864624 
+Run 1 stress 0.09864634 
+... Procrustes: rmse 0.0001142499  max resid 0.000410464 
+... Similar to previous best
+Run 2 stress 0.1072013 
+Run 3 stress 0.09864652 
+... Procrustes: rmse 6.884432e-05  max resid 0.0001825542 
+... Similar to previous best
+Run 4 stress 0.1071759 
+Run 5 stress 0.09864652 
+... Procrustes: rmse 0.0001590587  max resid 0.0004995686 
+... Similar to previous best
+Run 6 stress 0.3915367 
+Run 7 stress 0.09864625 
+... Procrustes: rmse 6.5558e-05  max resid 0.0002346756 
+... Similar to previous best
+Run 8 stress 0.0986463 
+... Procrustes: rmse 7.87222e-05  max resid 0.0002620717 
+... Similar to previous best
+Run 9 stress 0.0986467 
+... Procrustes: rmse 7.420601e-05  max resid 0.0002615199 
+... Similar to previous best
+Run 10 stress 0.09864645 
+... Procrustes: rmse 0.0001465079  max resid 0.0004822014 
+... Similar to previous best
+Run 11 stress 0.09864623 
+... New best solution
+... Procrustes: rmse 1.233628e-05  max resid 3.432791e-05 
+... Similar to previous best
+Run 12 stress 0.1071744 
+Run 13 stress 0.09864632 
+... Procrustes: rmse 3.806888e-05  max resid 0.0001039983 
+... Similar to previous best
+Run 14 stress 0.0986463 
+... Procrustes: rmse 7.683655e-05  max resid 0.0002241324 
+... Similar to previous best
+Run 15 stress 0.09864642 
+... Procrustes: rmse 0.0001197154  max resid 0.0004285154 
+... Similar to previous best
+Run 16 stress 0.09864627 
+... Procrustes: rmse 2.948741e-05  max resid 7.331517e-05 
+... Similar to previous best
+Run 17 stress 0.09864625 
+... Procrustes: rmse 6.217655e-05  max resid 0.0002431316 
+... Similar to previous best
+Run 18 stress 0.09864657 
+... Procrustes: rmse 0.0001874853  max resid 0.0006746782 
+... Similar to previous best
+Run 19 stress 0.1071744 
+Run 20 stress 0.09864631 
+... Procrustes: rmse 8.719146e-05  max resid 0.0002990185 
+... Similar to previous best
+*** Solution reached
+> make_inext()
+X204.362D.final	56000
+X204.1D21.final	56000
+X215.591C.t.2	56000
+X215.0B59.t.2	56000
+X213.5D38.final	56000
+X213.3C4E.final	56000
+X204.2401.final	56000
+X204.691B.final	56000
+X215.7262.t.2	56000
+X213.0433.final	56000
+X215.471D.t.2	56000
+X204.2B00.final	56000
+X213.1B7C.final	56000
+X213.0F6A.final	56000
+X215.406C.t.2	56000
+X213.496F.final	56000
+X204.014D.final	56000
+X215.340E.t.2	56000
+X204.0E29.final	56000
+X213.3451.final	56000
+X213.4410.final	56000
+X215.0B2B.t.2	56000
+X204.3B49.final	56000
+X215.6E50.t.2	56000
+X204.4305.final	56000
+X215.0646.t.2	56000
+X213.7B56.final	56000
+X204.0A78.final	56000
+X213.6224.final	56000
+X215.0302.t.2	56000
+Parsed with column specification:
+cols(
+  baseline = col_double(),
+  `t.2 - 8 Weeks LAR_G` = col_double()
+)
+> make_gginext()
+pdf 
+  2 
+> inext_stat()
+Warning message:
+In wilcox.test.default(x = c(116, 109, 114, 115, 116, 116, 115,  :
+  cannot compute exact p-value with ties
+> 
+> ##############  Genus  ###########
+> level="Genus"
+> ps=tax_glom(physeq,taxrank="Genus")
+> ##################################
+> #    NMDS, iNEXT, MetacodeR      #
+> ##################################
+> #rare=56000
+> #library(phyloseq)
+> #library(vegan) # adonis
+> #library(writexl)
+> #library(ggplot2)
+> #library(iNEXT)
+> #library(readr)
+> #library(dplyr) #select
+> #library(metacoder)#filter_taxa function in conflict with phyloseq
+> #library(writexl)                          
+> #library(tidyr) #unite select
+> #library(plyr)
+> #colors<-list();
+> #colors[["ISS"]]<- "red"
+> #colors[["ISS_G"]]<- "blue"
+> #colors[["final LAR"]]<- "#00661A"
+> #colors[["final LAR_G"]]<- "#666600"
+> #colors[["t.2 - 8 Weeks LAR"]]<- "#0000B2"
+> #colors[["t.1 - 4 Weeks LAR"]]<- "#D93600"
+> #colors[["t.0 - Pre Launch LAR"]]<- "#7F00FF"
+> #colors[["t.2 - 8 Weeks LAR_G"]]<- "#006DD9"
+> #colors[["t.1 - 4 Weeks LAR_G"]]<- "#FF8000"
+> #colors[["t.0 - Pre Launch LAR_G"]]<- "#9673FF"
+> #colors[["baseline"]]<- "#444444"
+> ##################################
+> #load("../physeq.Rdata")
+> #load("../meta.Rdata")
+> #load("../inextout.ASV.Rdata")
+> ##################################
+> #ps=physeq
+> #ps=tax_glom(physeq,taxrank="Species")
+> #ps=tax_glom(physeq,taxrank="Genus")
+> #level="ASV";
+> #level="Species";
+> #level="Genus";
+> ##################################
+> make_ps <- function(){
++ 	script=paste0("subset_samples(ps,( ",key1," == comp1 | ",key2," == comp2))")
++ 	pss=eval(parse(text=script));
++ 	pssf=phyloseq::filter_taxa(pss, function(x) length(which(x >= 10))>=2 | sum(x) >= 100, TRUE)
++ 	pssfp=prune_samples(sample_sums(pssf)>=rare, pssf)
++ 	pssfpr<<-rarefy_even_depth(pssfp,rngseed=1,sample.size=rare,replace=F)
++ }
+> 
+> make_nmds_perma <- function(){
++ 	pssfpr.ord=phyloseq::ordinate(pssfpr,"NMDS","bray")
++ 	treatment_order=c(comp1a,comp2a)
++ 	p_pssfpr=phyloseq::plot_ordination(pssfpr,pssfpr.ord,type="samples",color="Compare") + labs(color = "Treatment") + geom_point(size=2) + stat_ellipse()  
++ 	p_pssfpr$data$Compare<-as.character(p_pssfpr$data$Compare)
++ 	p_pssfpr$data$Compare<-factor(p_pssfpr$data$Compare,levels=treatment_order)
++ 	pdf(paste0(level,"/NMDS_Bray_",comp1filename,".vs.",comp2filename,"_",level,".pdf"),width=6,height=6)
++ 	color1=colors[[levels(p_pssfpr$data$Compare)[1]]]
++ 	color2=colors[[levels(p_pssfpr$data$Compare)[2]]]
++ 	ppp=p_pssfpr + scale_color_manual(values=c(color1,color2),labels=c(comp1title,comp2title)) + ggtitle(paste0("Fecal ",comp1title," & ",comp2title," NMDS - ",level))
++ 	print(ppp)
++ 	dev.off()
++ 	bray_dist=phyloseq::distance(pssfpr, method="bray",type="samples")
++ 	dataframe=data.frame(sample_data(pssfpr))
++ 	pnova=adonis(bray_dist ~ Compare, data = dataframe)
++ 	write_xlsx(pnova$aov.tab,paste0(level,"/Permanova_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ }
+> 
+> make_inext <- function(){
++ 	pssfprfile=paste0(level,"/pssfpr_",comp1filename,".vs.",comp2filename,"_",level,".txt")
++ 	pssfprfile1=paste0(      "pssfpr_",comp1filename,".vs.",comp2filename,"_",level,".txt")
++ 	write.table(otu_table(pssfpr),pssfprfile,sep="\t",quote=FALSE)
++ 	system(paste0("../make_inext_table_ave.pl ",pssfprfile1," Compare ",level))
++ 	
++ 	inextfile=paste0(level,"/inext_list_",pssfprfile1);
++ 	inext.in=read_tsv(inextfile)
++ 	inext.out=iNEXT(as.list(inext.in),q=c(0,1,2),datatype="abundance",nboot=100)
++ 	script=paste0("inextout.",obj,".",level," <<- inext.out")
++ 	eval(parse(text=script));
++ 	script=paste0("save(inextout.",obj,".",level,",file='inextout.",obj,".",level,".Rdata')")
++ 	eval(parse(text=script));
++ 
++ }
+> 
+> make_gginext <- function(){
++ 	script=paste0("inext.out<-inextout.",obj,".",level)
++ 	#script=paste0("inext.out<-inextout.1.",level)	
++ 	eval(parse(text=script))
++ 	test<-sort(c(comp1title,comp2title))
++ 	if(test[1]==comp1title){
++ 		color1=colors[[comp1a]]
++ 		color2=colors[[comp2a]]
++ 	}else{
++ 		color1=colors[[comp2a]]
++ 		color2=colors[[comp1a]]	
++ 	}
++ #	color1=colors[[levels(inext.out$DataInfo$site)[1]]]
++ #	color2=colors[[levels(inext.out$DataInfo$site)[2]]]
++ 	names(inext.out$iNextEst)[which(names(inext.out$iNextEst)==comp1a)]<-comp1title
++ 	names(inext.out$iNextEst)[which(names(inext.out$iNextEst)==comp2a)]<-comp2title
++ 	ggiNEXTout=ggiNEXT(inext.out, type=1, facet.var="order") + facet_wrap(~order, scales="free", ncol=1) + theme_bw(base_size=12)
++ 	ggiNEXTout= ggiNEXTout + ggtitle(paste0("Sample-size based rarefaction and extrapolation sampling curves:\nFecal ",comp1title," vs ",comp2title," - ",level," level"))
++ 	ggiNEXTout= ggiNEXTout + xlab("Number of Sequences") + ylab(paste0(level," Diversity")) + scale_color_manual(values=c(color1,color2))
++ 	ppp=ggiNEXTout
++ 	pdf(paste0(level,"/iNEXT_Hill_Numbers_",comp1filename,".vs.",comp2filename,"_type1_",level,".pdf"),width=6,height=8)
++ 	print(ppp)
++ 	dev.off()
++ 	ggiNEXTout=ggiNEXT(inext.out, type=2, facet.var="order") + facet_wrap(~order, scales="free", ncol=1) + theme_bw(base_size=12)
++ 	ggiNEXTout= ggiNEXTout + ggtitle(paste0("Sample completeness curves:\nFecal ",comp1title," vs ",comp2title," - ",level," level"))
++ 	ggiNEXTout= ggiNEXTout + xlab("Number of Sequences") + ylab("Sample Coverage") + scale_color_manual(values=c(color1,color2))
++ 	ppp=ggiNEXTout
++ 	pdf(paste0(level,"/iNEXT_Hill_Numbers_",comp1filename,".vs.",comp2filename,"_type2_",level,".pdf"),width=6,height=4)
++ 	print(ppp)
++ 	dev.off()
++ 	ggiNEXTout=ggiNEXT(inext.out, type=3, facet.var="order") + facet_wrap(~order, scales="free", ncol=1) + theme_bw(base_size=12)
++ 	ggiNEXTout= ggiNEXTout + ggtitle(paste0("Coverage based rarefaction and extrapolation sampling curves:\nFecal ",comp1title," vs ",comp2title," - ",level," level"))
++ 	ggiNEXTout= ggiNEXTout + xlab("Sample Coverage") + ylab(paste0(level," Diversity")) + scale_color_manual(values=c(color1,color2))
++ 	ppp=ggiNEXTout
++ 	pdf(paste0(level,"/iNEXT_Hill_Numbers_",comp1filename,".vs.",comp2filename,"_type3_",level,".pdf"),width=6,height=8)
++ 	print(ppp)
++ 	dev.off()
++ }
+> 
+> inext_stat <- function(){
++ 	pssfprfile=paste0(level,"/pssfpr_",comp1filename,".vs.",comp2filename,"_",level,".txt")
++ 	system(paste0("../make_inext_table.pl ",pssfprfile," ",comp1filename,".vs.",comp2filename," ",level))
++ 	inext.all=read_tsv(paste0(level,"/inext_",comp1filename,".vs.",comp2filename,".txt"),cols(.default = col_double()),col_names=T)
++ 	inext.all.out<-iNEXT(as.list(inext.all),q=c(0,1,2),datatype="abundance",nboot=0,size=rare)
++ 	inext.all.out_iNextEst<-inext.all.out$iNextEst
++ 	inext.q123=NULL
++ 	for(i in 1:length(inext.all.out_iNextEst)) {
++ 		inext.q123=rbind(inext.q123,
++ 			cbind("name"=names(inext.all.out_iNextEst[i]),
++ 				select(filter(inext.all.out_iNextEst[[i]], m==rare & order==0),qD),
++ 				select(filter(inext.all.out_iNextEst[[i]], m==rare & order==1),qD),
++ 				select(filter(inext.all.out_iNextEst[[i]], m==rare & order==2),qD)
++ 			)
++ 		)
++ 	}
++ 	
++ 	meta1=meta[meta$X %in% inext.q123$name,]
++ 	names(meta1)[1]="SampleID"
++ 	colnames(inext.q123)=c("SampleID","qD0","qD1","qD2")
++ 	inext.q123m=merge(inext.q123,meta1,by="SampleID")
++ 	ttest_all.qD0=     t.test(qD0 ~ Compare, data=inext.q123m)
++ 	ttest_all.qD1=     t.test(qD1 ~ Compare, data=inext.q123m)
++ 	ttest_all.qD2=     t.test(qD2 ~ Compare, data=inext.q123m)
++ 	wtest_all.qD0=wilcox.test(qD0 ~ Compare, data=inext.q123m)
++ 	wtest_all.qD1=wilcox.test(qD1 ~ Compare, data=inext.q123m)
++ 	wtest_all.qD2=wilcox.test(qD2 ~ Compare, data=inext.q123m)
++ 	
++ 	ttest.rows=c("t statistic",
++ 	"degrees of freedom",  
++ 	"p.value",    
++ 	"confidence interval 1",  
++ 	"confidence interval 2",
++ 	"estimated mean 1",  
++ 	"estimated mean 1",
++ 	"stderr",     
++ 	"alternative hypothesis",
++ 	"t test method")
++ 	
++ 	ttest_all_qD0=c(
++ 	ttest_all.qD0$statistic,  
++ 	ttest_all.qD0$parameter,  
++ 	ttest_all.qD0$p.value,    
++ 	ttest_all.qD0$conf.int,   
++ 	ttest_all.qD0$estimate,   
++ 	ttest_all.qD0$stderr,     
++ 	ttest_all.qD0$alternative,
++ 	ttest_all.qD0$method)
++ 	
++ 	ttest_all_qD1=c(
++ 	ttest_all.qD1$statistic,  
++ 	ttest_all.qD1$parameter,  
++ 	ttest_all.qD1$p.value,    
++ 	ttest_all.qD1$conf.int,   
++ 	ttest_all.qD1$estimate,   
++ 	ttest_all.qD1$stderr,     
++ 	ttest_all.qD1$alternative,
++ 	ttest_all.qD1$method)
++ 			
++ 	ttest_all_qD2=c(
++ 	ttest_all.qD2$statistic,  
++ 	ttest_all.qD2$parameter,  
++ 	ttest_all.qD2$p.value,    
++ 	ttest_all.qD2$conf.int,   
++ 	ttest_all.qD2$estimate,   
++ 	ttest_all.qD2$stderr,     
++ 	ttest_all.qD2$alternative,
++ 	ttest_all.qD2$method)
++ 	
++ 	ttest_all=data.frame("Hill_Number"=ttest.rows,qD0=ttest_all_qD0,qD1=ttest_all_qD1,qD2=ttest_all_qD2)
++ 	
++ 	write_xlsx(ttest_all, paste0(level,"/Hill_numbers_",comp1filename,".vs.",comp2filename,"_T_test_",level,".xlsx"))
++ 	write_xlsx(inext.q123,paste0(level,"/Hill_numbers_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ 	
++ 	wtest.rows=c("w statistic",
++ 	"p.value",    
++ 	"alternative hypothesis",
++ 	"test method")
++ 	
++ 	wtest_all_qD0=c(
++ 	wtest_all.qD0$statistic,  
++ 	wtest_all.qD0$p.value,"true location shift is not equal to 0",   
++ 	wtest_all.qD0$method)
++ 	
++ 	wtest_all_qD1=c(
++ 	wtest_all.qD1$statistic,  
++ 	wtest_all.qD1$p.value,"true location shift is not equal to 0",   
++ 	wtest_all.qD1$method)
++ 	
++ 	wtest_all_qD2=c(
++ 	wtest_all.qD2$statistic,  
++ 	wtest_all.qD2$p.value,"true location shift is not equal to 0",   
++ 	wtest_all.qD2$method)
++ 	
++ 	wtest_all=data.frame("Hill_Number"=wtest.rows,qD0=wtest_all_qD0,qD1=wtest_all_qD1,qD2=wtest_all_qD2)
++ 	write_xlsx(wtest_all,paste0(level,"/Hill_numbers_",comp1filename,".vs.",comp2filename,"_Wilcox_ranksum_test_",level,".xlsx"))
++ }
+> 
+> ################################## metacoder
+> 
+> plot_body_site_diff <- function(x, site_1, site_2, output_name, seed = 1, outformat="svg", level="OTUs") {
++ 	if(level == "Genus"){
++ 	level1="Genera"
++ 	}else{
++ 	level1=level
++ 	}
++ 	set.seed(seed)
++ 	x %>%
++ 	mutate_obs("tax_prop", abundance = rowMeans(x$data$tax_prop[x$data$sample_data$sample_id])) %>%
++ 	filter_taxa(abundance >= 0.001, reassign_obs = FALSE) %>%
++ 	filter_taxa(taxon_names != "", reassign_obs = FALSE) %>% # Some taxonomic levels are not named
++ 	filter_obs("diff_table", treatment_1 %in% c(site_1, site_2), treatment_2 %in% c(site_1, site_2)) %>%
++ 	heat_tree(node_size_axis_label = paste0("Number of ",level1),
++ 	node_size = n_obs,
++ 	node_size_range=c(0.02,.06),
++ 	node_label_size_range=c(0.02,.04),
++ 	node_color_axis_label = "Log 2 ratio",
++ 	node_color = log2_median_ratio,
++ 	node_color_range = diverging_palette(),
++ 	node_color_trans = "linear",
++ 	initial_layout = "re", layout = "da",
++ 	node_color_interval = c(-5, 5),
++ 	edge_color_interval = c(-5, 5),
++ 	node_label = taxon_names,
++ 	output_file = paste0(output_name, "--", site_1, ".vs.", site_2, "_",level,".", outformat)
++ 	)
++ }
+> 
+> make_metacoder <- function(){
++ 	#mc=parse_phyloseq(pssfpr)
++ 	mc=parse_phyloseq(ps)
++ 	mc$data$otu_prop=calc_obs_props(mc,data="otu_table",cols=mc$data$sample_data$sample_id)
++ 	mc$data$tax_prop=calc_taxon_abund(mc,data="otu_prop",cols=mc$data$sample_data$sample_id)
++ 	comcol=mc$data$sample_data$Compare
++ 	mc$data$diff_table <- compare_groups(mc, data='tax_prop', cols= mc$data$sample_data$sample_id, groups= comcol,combinations = list(c(comp1a,comp2a)))
++ 	mc <- mutate_obs(mc, "diff_table", wilcox_p_value = p.adjust(wilcox_p_value, method = "fdr"), log2_median_ratio = ifelse(wilcox_p_value < 0.05 | is.na(wilcox_p_value), log2_median_ratio, 0))
++ 	outname<-paste0(level,"/MetacodeR")
++ 	plot_body_site_diff(mc,comp1a,comp2a,outname,1,"pdf",level)
++ 	taxonomy=classifications(mc)
++ 	difftable=cbind(taxonomy,mc$data$diff_table)
++ 	write_xlsx(difftable,paste0(level,"/MetacodeR_diff_table_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ 	taxprotable=cbind(taxonomy,mc$data$tax_prop)
++ 	write_xlsx(taxprotable,paste0(level,"/MetacodeR_tax_proportion_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ 	taxonomy=unite(mc$data$tax_data[,3:8], Taxonomy,c("Kingdom","Phylum","Class","Order","Family","Genus"), sep=";")
++ 	otuprotable=cbind(taxonomy,mc$data$otu_prop)
++ 	write_xlsx(otuprotable,paste0(level,"/MetacodeR_otu_proportion_",comp1filename,".vs.",comp2filename,"_",level,".xlsx"))
++ }
+> 
+> 
+> ################################## perform by calling functions
+> make_metacoder()
+The following 95 of 95 (100%) input indexes have `NA` in their classifications:
+   1, 2, 3, 4, 5, 6, 7, 8, 9 ... 87, 88, 89, 90, 91, 92, 93, 94, 95
+
+Calculating proportions from counts for 140 columns for 95 observations.
+Summing per-taxon counts from 140 columns for 151 taxa
+There were 50 or more warnings (use warnings() to see the first 50)
+> make_ps()
+`set.seed(1)` was used to initialize repeatable random subsampling.
+Please record this for your records so others can reproduce.
+Try `set.seed(1); .Random.seed` for the full vector
+...
+> make_nmds_perma()
+Square root transformation
+Wisconsin double standardization
+Run 0 stress 0.1149069 
+Run 1 stress 0.1133685 
+... New best solution
+... Procrustes: rmse 0.01728649  max resid 0.05887339 
+Run 2 stress 0.1255703 
+Run 3 stress 0.1133688 
+... Procrustes: rmse 0.000297897  max resid 0.001294949 
+... Similar to previous best
+Run 4 stress 0.1175715 
+Run 5 stress 0.1165273 
+Run 6 stress 0.1218881 
+Run 7 stress 0.1249629 
+Run 8 stress 0.1133684 
+... New best solution
+... Procrustes: rmse 0.0001409668  max resid 0.0006066807 
+... Similar to previous best
+Run 9 stress 0.1133684 
+... New best solution
+... Procrustes: rmse 0.0001411743  max resid 0.0005046599 
+... Similar to previous best
+Run 10 stress 0.1235486 
+Run 11 stress 0.1162415 
+Run 12 stress 0.1175719 
+Run 13 stress 0.1151744 
+Run 14 stress 0.1160673 
+Run 15 stress 0.1156703 
+Run 16 stress 0.1235479 
+Run 17 stress 0.1150055 
+Run 18 stress 0.119121 
+Run 19 stress 0.1160723 
+Run 20 stress 0.122146 
+*** Solution reached
+> make_inext()
+X215.406C.t.2	56000
+X213.0F6A.final	56000
+X204.4305.final	56000
+X204.0A78.final	56000
+X213.496F.final	56000
+X204.3B49.final	56000
+X213.5D38.final	56000
+X204.691B.final	56000
+X204.362D.final	56000
+X215.0B2B.t.2	56000
+X215.471D.t.2	56000
+X213.3451.final	56000
+X215.0302.t.2	56000
+X204.2401.final	56000
+X213.4410.final	56000
+X204.0E29.final	56000
+X213.3C4E.final	56000
+X215.340E.t.2	56000
+X215.6E50.t.2	56000
+X213.1B7C.final	56000
+X213.7B56.final	56000
+X204.1D21.final	56000
+X213.6224.final	56000
+X204.014D.final	56000
+X215.591C.t.2	56000
+X215.0646.t.2	56000
+X213.0433.final	56000
+X204.2B00.final	56000
+X215.0B59.t.2	56000
+X215.7262.t.2	56000
+Parsed with column specification:
+cols(
+  baseline = col_double(),
+  `t.2 - 8 Weeks LAR_G` = col_double()
+)
+> make_gginext()
+pdf 
+  2 
+> inext_stat()
+Warning messages:
+1: In wilcox.test.default(x = c(71, 68, 68, 71, 72, 71, 71, 68, 73,  :
+  cannot compute exact p-value with ties
+2: In wilcox.test.default(x = c(1.619, 1.646, 1.96, 1.529, 4.418, 3.147,  :
+  cannot compute exact p-value with ties
+> 
+> 
+> proc.time()
+     user    system   elapsed 
+12410.657     1.914 12413.641 
