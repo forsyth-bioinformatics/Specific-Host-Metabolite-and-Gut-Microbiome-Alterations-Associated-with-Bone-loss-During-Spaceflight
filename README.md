@@ -12,7 +12,7 @@ Output consists of:
  - Species Analysis - 
  - Gene Analysis -
 
-## 16S Data
+## 16S rRNA Data
 16S rRNA sequencing was performed on 20 samples amplifying the V1-V3 region with an average Read Depth of X reads/sample
 Reads were processed using custom bioinformatic workflows in R
 
